@@ -8,6 +8,7 @@ gem 'rails', '3.2.8'
 gem 'mysql2'
 gem 'haml'
 gem 'haml-rails'
+gem "bcrypt-ruby", :require => "bcrypt"
 
 
 # Gems used only for assets and not required

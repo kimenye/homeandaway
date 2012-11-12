@@ -1,2 +1,16 @@
-%h1 Home#index
-%p Find me in app/views/home/index.html.haml
+.row
+  .twelve.columns
+    %h2 Western Union : Home and Away
+  %hr
+.row
+  .twelve.columns
+    #user_nav
+      - if current_user
+        Logged in as #{current_user.email}.
+        \#{link_to "Log out", log_out_path}
+      - else
+        = link_to "Sign up", sign_up_path
+        or
+        \#{link_to "log in", log_in_path}
+    - flash.each do |name, msg|
+      = content_tag :div, msg, :id => "flash_#{name}"
