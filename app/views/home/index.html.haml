@@ -6,8 +6,16 @@
   .twelve.columns
     #user_nav
       - if current_user
-        Logged in as #{current_user.email}.
-        \#{link_to "Log out", log_out_path}
+        Logged in as #{current_user.email}
+        = link_to "Log out", log_out_path
+
+        - if current_user.login_type == "oauth"
+          = image_tag "http://graph.facebook.com/#{current_user.uid}/picture?type=small"
+        - else
+          - if current_user.avatar
+            = image_tag current_user.avatar.url
+          -else
+
       - else
         = link_to "Sign up", sign_up_path
         or

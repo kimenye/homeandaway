@@ -1,8 +1,11 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :password, :password_confirmation, :first_name, :last_name, :login_type
+  include Paperclip::Glue
+
+  attr_accessible :email, :password, :password_confirmation, :first_name, :last_name, :login_type, :avatar
 
   attr_accessor :password
   before_save :encrypt_password
+  has_attached_file :avatar
 
   validates_confirmation_of :password
   validates_presence_of :password, :on => :create

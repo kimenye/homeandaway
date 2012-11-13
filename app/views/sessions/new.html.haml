@@ -1,11 +1,19 @@
-%h1 Log in
-= form_tag sessions_path do
-  %p
-    = label_tag :email
-    %br/
-    = text_field_tag :email, params[:email]
-  %p
-    = label_tag :password
-    %br/
-    = password_field_tag :password
-  %p.button= submit_tag "Log in"
+.row
+  .eight.columns
+    .row
+      %h3.offset-by-one.columns Log in
+    .row
+      = form_tag sessions_path do
+        .row
+          .three.mobile-one.columns
+            = label_tag :email, nil, :class => "right inline"
+          .nine.mobile-three.columns
+            = text_field_tag :email, params[:email], :class => "five"
+        .row
+          .three.mobile-one.columns
+            = label_tag :password, nil, :class => "right inline"
+          .nine.mobile-three.columns
+            = password_field_tag :password, nil, :class=> "five"
+        .row
+          .offset-by-three.columns
+            = submit_tag "Log in", :class => "button"
