@@ -72,6 +72,10 @@ Homeandaway::Application.routes.draw do
   #match 'signout', to: 'sessions#destroy', as: 'signout'
 
   root :to => "users#new"
-  resources :users
+
+  resources :users do
+    resources :stories
+  end
+
   resources :sessions
 end

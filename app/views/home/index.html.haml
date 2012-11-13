@@ -1,26 +1,86 @@
 .row
   .twelve.columns
-    %h2 Western Union : Home and Away
-  %hr
-.row
-  .twelve.columns
-    #user_nav
+    .right
       - if current_user
-        Logged in as #{current_user.email}
         = link_to "Log out", log_out_path
-
-        - if current_user.login_type == "oauth"
-          = image_tag "http://graph.facebook.com/#{current_user.uid}/picture?type=small"
-        - else
-          - if current_user.avatar
-            = image_tag current_user.avatar.url
-          -else
-
       - else
         = link_to "Sign up", sign_up_path
-        or
-        = link_to "log in", log_in_path
-        or
+        |
+        = link_to "Log in", log_in_path
+        |
         = link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in"
-    - flash.each do |name, msg|
-      = content_tag :div, msg, :id => "flash_#{name}"
+    %h3 Home and Away
+.row
+  .seven.columns
+    - if current_user
+      .row.mobile
+        .two.phone-one.columns
+          - if current_user.login_type == "oauth"
+            = image_tag "http://graph.facebook.com/#{current_user.uid}/picture?type=small"
+          - else
+            - if current_user.avatar
+              = image_tag current_user.avatar.url(:thumb)
+            -else
+              = image_tag "http://placehold.it/200x200"
+        .ten.phone-three.columns
+          %a.button.radius{"data-reveal-id" => "storyModal", :href => "#"} Post My Story
+  .four.columns.offset-by-one
+    %dl.tabs
+      %dd.active
+        %a.active{:href => "#recent"} Recent Stories
+      %dd
+        %a{:href => "#featured"} Featured Stories
+    %ul.tabs-content
+      %li#recentTab.active
+        - if @stories and @stories.length > 0
+          - @stories.each do |msg|
+            .row
+              .four.columns
+                - if !msg.picture_file_name.nil?
+                  = image_tag msg.picture.url(:thumb)
+                - else
+                  = image_tag "http://placehold.it/200x200"
+              .eight.columns
+                %p
+                  %strong
+                    = msg.title
+                %p
+                  =msg.body
+                %p
+                  = "By #{msg.user.first_name}"
+        - else
+          %p There are no stories... Why not create one?
+      %li#featuredTab
+        - if @featured
+        - else
+          %p There are no stories... Why not create one?
+
+
+
+#storyModal.reveal-modal{:class => "expand, xlarge, large, medium, small"}
+  .row
+    .twelve.columns
+      .row
+        %h5.offset-by-one.columns Tell us your Story
+      .row
+        -if current_user
+          = form_for([current_user, current_user.stories.build], :html => { :multipart => true }) do |f|
+            .row
+              .two.columns
+                = f.label :title, :class => "right inline"
+              .ten.columns
+                = f.text_field :title, :class => "twelve"
+            .row
+              .two.columns
+                = f.label :body, 'Story', :class => "right inline"
+              .ten.columns
+                = f.text_area :body, :class => "twelve", :rows => 10
+            .row
+              .two.columns
+                %label.right.inline Picture
+              .ten.columns
+                = f.file_field :picture
+            .row
+              .offset-by-two.columns
+                = f.submit :class => "button"
+  %a.close-reveal-modal &#215;
