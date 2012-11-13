@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email
 
   def self.authenticate(email, password)
-    user = find_by_email(email)
+    user = find_by_email_and_login_type(email, "http")
     if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
       user
     else
@@ -27,12 +27,12 @@ class User < ActiveRecord::Base
 
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
-      puts "#{auth}"
       user.provider = auth.provider
       user.uid = auth.uid
       user.first_name = auth.info.first_name
       user.last_name = auth.info.last_name
       user.email = auth.info.email
+      user.login_type = "oauth"
 
       password_salt = BCrypt::Engine.generate_salt
       user.password =  BCrypt::Engine.hash_secret("none", password_salt)
