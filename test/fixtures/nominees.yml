@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  story: 
+  full_name: MyString
+  mtcn: MyString
+
+two:
+  story: 
+  full_name: MyString
+  mtcn: MyString

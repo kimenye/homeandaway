@@ -47,4 +47,8 @@ class User < ActiveRecord::Base
     end
   end
 
+  def has_pic?
+    return !avatar_file_name.nil?
+  end
+
 end

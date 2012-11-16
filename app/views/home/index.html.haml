@@ -18,12 +18,38 @@
           - if current_user.login_type == "oauth"
             = image_tag "http://graph.facebook.com/#{current_user.uid}/picture?type=small"
           - else
-            - if current_user.avatar
+            - if current_user.has_pic?
               = image_tag current_user.avatar.url(:thumb)
             -else
               = image_tag "http://placehold.it/200x200"
         .ten.phone-three.columns
           %a.button.radius{"data-reveal-id" => "storyModal", :href => "#"} Post My Story
+      .row
+        .two
+          %h5 My Stories
+        - if current_user.stories.empty?
+          %p No Stories.
+        - else
+          - current_user.stories.each do |story|
+            .row
+              .three.columns
+                - if story.has_pic?
+                  = image_tag story.picture.url(:thumb)
+                - else
+                  = image_tag "http://placehold.it/200x200"
+              .nine.columns
+                %p
+                  %strong
+                    = story.title
+                %p
+                  = story.body
+                -#- if story.nominee.nil?
+                - if story.has_nominee?
+                  %p
+                    %strong
+                      = "Nominee: #{story.nominee.full_name}"
+                - else
+                  %a.button.radius{"data-reveal-id" => "nominateModal#{story.id}", :href => "#"} Nominate your Hero!
   .four.columns.offset-by-one
     %dl.tabs
       %dd.active
@@ -32,11 +58,11 @@
         %a{:href => "#featured"} Featured Stories
     %ul.tabs-content
       %li#recentTab.active
-        - if @stories and @stories.length > 0
+        - if @stories and !@stories.empty?
           - @stories.each do |msg|
             .row
               .four.columns
-                - if !msg.picture_file_name.nil?
+                - if msg.has_pic?
                   = image_tag msg.picture.url(:thumb)
                 - else
                   = image_tag "http://placehold.it/200x200"
@@ -84,3 +110,30 @@
               .offset-by-two.columns
                 = f.submit :class => "button"
   %a.close-reveal-modal &#215;
+#myStories
+  - if current_user
+    - current_user.stories.each do |story|
+      - if story.id and !story.has_nominee?
+        .reveal-modal{:id => "nominateModal#{story.id}"}
+          .row
+            %h5.offset-by-one.columns Nominate your hero
+          .row
+            = form_for([story, story.nominees.build], :html => { :multipart => true }) do |f|
+              .row
+                .two.columns
+                  = f.label :full_name, :class => "right inline"
+                .ten.columns
+                  = f.text_field :full_name, :class => "ten"
+              .row
+                .two.columns
+                  = label_tag :mtcn, "MTCN", :class => "right inline"
+                .ten.columns
+                  = f.text_field :mtcn, :class => "ten"
+              .row
+                .ten.offset-by-two.columns
+                  %input{:type => "checkbox"}
+                    %span.custom.checkbox I agree to terms and conditions
+              .row
+                .offset-by-two.columns
+                  = f.submit :class => "button radius"
+

@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121113132650) do
+ActiveRecord::Schema.define(:version => 20121115130425) do
+
+  create_table "nominees", :force => true do |t|
+    t.integer  "story_id"
+    t.string   "full_name"
+    t.string   "mtcn"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "nominees", ["story_id"], :name => "index_nominees_on_story_id"
 
   create_table "stories", :force => true do |t|
     t.integer  "user_id"

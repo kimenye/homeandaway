@@ -77,5 +77,11 @@ Homeandaway::Application.routes.draw do
     resources :stories
   end
 
+  resources :stories do
+    resources :nominees
+  end
+
+  resources :nominees
+
   resources :sessions
 end
