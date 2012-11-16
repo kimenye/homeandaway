@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121115130425) do
+ActiveRecord::Schema.define(:version => 20121116122314) do
 
   create_table "nominees", :force => true do |t|
     t.integer  "story_id"
@@ -57,5 +57,15 @@ ActiveRecord::Schema.define(:version => 20121115130425) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
   end
+
+  create_table "votes", :force => true do |t|
+    t.integer  "nominee_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "votes", ["nominee_id"], :name => "index_votes_on_nominee_id"
+  add_index "votes", ["user_id"], :name => "index_votes_on_user_id"
 
 end

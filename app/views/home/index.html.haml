@@ -74,6 +74,12 @@
                   =msg.body
                 %p
                   = "By #{msg.user.first_name}"
+                - if msg.has_nominee?
+                  %p
+                    %strong Nominated:
+                    = msg.nominee.full_name
+                  - if current_user and msg.can_vote_for_story?(current_user)
+                    %a.button.radius.vote-link{:href => "#", 'data-id' => "#{msg.nominee.id}"} Vote!
         - else
           %p There are no stories... Why not create one?
       %li#featuredTab

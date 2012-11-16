@@ -73,15 +73,14 @@ Homeandaway::Application.routes.draw do
 
   root :to => "users#new"
 
-  resources :users do
-    resources :stories
+  resources :users, :shallow => true do
+    resources :stories do
+      resources :nominees do
+        resources :votes
+      end
+    end
   end
 
-  resources :stories do
-    resources :nominees
-  end
-
-  resources :nominees
 
   resources :sessions
 end
