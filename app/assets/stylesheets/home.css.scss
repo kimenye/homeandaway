@@ -11,6 +11,8 @@ header {
   border-bottom: 5px solid #ffdd00;
   color: #ffffff;
   text-align: center;
+  position: relative;
+  z-index: 10000;
 }
 
 .tagline {
@@ -26,13 +28,27 @@ header {
   font-size: 18px;
 }
 
+.login-or-register {
+  background-color: #ffdd00;
+  height: 270px;
+  position: absolute;
+  width: 100%;
+  top: -270px;
+}
+
+.icon-holder {
+  position: absolute;
+  top: 270px;
+  width: 100%;
+}
+
 a.icon-drop-down {
   display: block;
   width: 82px;
   height: 30px;
-  margin: auto;
   background: url('/assets/icons-drop-down.png') no-repeat;
   background-position: 0 -30px;
+  margin: auto;
 }
 
 a.icon-drop-down:hover {
@@ -44,8 +60,8 @@ a.icon-drop-down:hover {
   background-image:radial-gradient(rgba(80,0,0,0.1) 0%, rgba(80,0,0,0.2) 30%, rgba(21,11,1,0.9) 100% );
   background-image:-webkit-radial-gradient(rgba(80,0,0,0.1) 0%, rgba(80,0,0,0.2) 30%, rgba(21,11,1,0.9) 100% );
   background-image:-moz-radial-gradient(rgba(80,0,0,0.1) 0%, rgba(80,0,0,0.2) 30%, rgba(21,11,1,0.9) 100% );
-  //background-color: #392618;
   height: 270px;
+  position: relative;
 }
 
 .body {
@@ -94,10 +110,6 @@ p.summary {
 
 .votes {
   font-size: 18px;
-  //margin-top: 30px;
-  //position: relative;
-  //top: -44px;
-  //left: 228px;
 }
 
 .rounded {
@@ -115,6 +127,10 @@ p.summary {
   height: 15px;
   position: relative;
   left: 50px;
+}
+
+.hidden {
+  display: none;
 }
 
 @media only screen and (max-width: 767px) {
