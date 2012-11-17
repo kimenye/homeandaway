@@ -1,3 +1,133 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+header {
+  background-color: black;
+  background-image: url(/assets/logo.jpg);
+  background-repeat: no-repeat;
+  background-position: center 30px;
+  height: 180px;
+  width: 100%;
+  border-bottom: 5px solid #ffdd00;
+  color: #ffffff;
+  text-align: center;
+}
+
+.tagline {
+  padding-top: 90px;
+  font-weight: 600;
+  display: block;
+}
+
+.cta-share {
+  color: #ffdd00;
+  display: block;
+  padding-top: 45px;
+  font-size: 18px;
+}
+
+a.icon-drop-down {
+  display: block;
+  width: 82px;
+  height: 30px;
+  margin: auto;
+  background: url('/assets/icons-drop-down.png') no-repeat;
+  background-position: 0 -30px;
+}
+
+a.icon-drop-down:hover {
+  background-position:0px 0px;
+  cursor: pointer;
+}
+
+.promo {
+  background-image:radial-gradient(rgba(80,0,0,0.1) 0%, rgba(80,0,0,0.2) 30%, rgba(21,11,1,0.9) 100% );
+  background-image:-webkit-radial-gradient(rgba(80,0,0,0.1) 0%, rgba(80,0,0,0.2) 30%, rgba(21,11,1,0.9) 100% );
+  background-image:-moz-radial-gradient(rgba(80,0,0,0.1) 0%, rgba(80,0,0,0.2) 30%, rgba(21,11,1,0.9) 100% );
+  //background-color: #392618;
+  height: 270px;
+}
+
+.body {
+  background-color: #ffffff;
+}
+
+p.summary {
+  color: #707070;
+  font-size: 20px;
+  margin-bottom: 0px;
+}
+
+.yellow {
+  background-image: url('/assets/yellow-bg-repeat.jpg');
+  background-repeat: repeat-x;
+  min-height: 600px;
+}
+
+.spacer {
+  height: 20px;
+}
+
+.main {
+  background-color: #ffffff;
+}
+
+.story {
+  border: 1px solid #dedede;
+  min-height: 200px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+.story-text {
+  min-height: 50px;
+}
+
+.location {
+  margin-top: -15px;
+}
+
+.name {
+  margin-top: 15px;
+}
+
+.votes {
+  font-size: 18px;
+  //margin-top: 30px;
+  //position: relative;
+  //top: -44px;
+  //left: 228px;
+}
+
+.rounded {
+  -webkit-border-top-left-radius: 10px;
+  -webkit-border-top-right-radius: 10px;
+  -moz-border-radius-topleft: 10px;
+  -moz-border-radius-topright: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.indicator {
+  background-image: url('/assets/yellow-indicator.jpg');
+  width: 30px;
+  height: 15px;
+  position: relative;
+  left: 50px;
+}
+
+@media only screen and (max-width: 767px) {
+  .indicator {
+    background-image: url('/assets/yellow-indicator-vertical.jpg');
+    width: 15px;
+    height: 30px;
+    position: absolute;
+    left: -5px;
+    top: 5px;
+  }
+
+  .cta-share {
+    padding-top: 30px;
+  }
+}

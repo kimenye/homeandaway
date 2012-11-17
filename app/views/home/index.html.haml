@@ -1,4 +1,60 @@
-.row
+%header
+  %span.tagline Share with the world how a Hero came through for you with Western Union Money transfer
+  %span.cta-share SHARE YOUR STORY
+.container.promo
+  %a.icon-drop-down
+.container.body
+  .row.summary
+    .three.columns
+      %p.summary
+        %strong
+          = "#{@num_stories}"
+        Stories shared
+      .indicator
+    .three.columns
+      %p.summary
+        %strong
+          = "#{@num_nominees}"
+        Nominees
+    .three.columns
+      %p.summary
+        %strong
+          = "#{@num_votes}"
+        Votes Cast
+    .three.columns
+      %p.summary
+        %strong
+          1,250,000
+        Won
+.container.yellow
+  .row.spacer
+  .row.main.rounded
+    .twelve.columns
+      %h4.subheader Most Recent Stories
+  .row.main
+    .twelve.columns
+      - if @stories and !@stories.empty?
+        %ul.block-grid.three-up.mobile-one-up
+          - @stories.each do |msg|
+            %li
+              .story
+                .twelve.columns
+                  %h4.subheader
+                    = msg.title
+                .twelve.columns.story-text
+                  %p
+                    = msg.body
+                .twelve.columns
+                  .four.columns
+                    = image_tag "/assets/200x200.gif"
+                  .eight.columns
+                    %p.name
+                      %strong
+                        = msg.user.display_name
+                    %p.location
+                      = image_tag "/assets/location.jpg"
+                      Madrid, Spain
+-#.row
   .twelve.columns
     .right
       - if current_user
@@ -10,7 +66,7 @@
         |
         = link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in"
     %h3 Home and Away
-.row
+-#.row
   .seven.columns
     - if current_user
       .row.mobile
@@ -89,7 +145,7 @@
 
 
 
-#storyModal.reveal-modal{:class => "expand, xlarge, large, medium, small"}
+-##storyModal.reveal-modal{:class => "expand, xlarge, large, medium, small"}
   .row
     .twelve.columns
       .row
@@ -116,7 +172,7 @@
               .offset-by-two.columns
                 = f.submit :class => "button"
   %a.close-reveal-modal &#215;
-#myStories
+-##myStories
   - if current_user
     - current_user.stories.each do |story|
       - if story.id and !story.has_nominee?

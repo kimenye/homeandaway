@@ -22,4 +22,12 @@ class Story < ActiveRecord::Base
   def can_vote_for_story? user
     res = has_nominee? && nominee.can_be_voted_for_by?(user)
   end
+
+  def votes
+    num = 0
+    if has_nominee?
+      num = nominee.votes.length
+    end
+    num
+  end
 end
