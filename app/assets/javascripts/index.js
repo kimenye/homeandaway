@@ -11,7 +11,14 @@ $(document).ready(function() {
 //    });
 
     $('.icon-drop-down').click(function() {
-        console.log("Clicked the drop down", $('.login-or-register'));
-        $('.login-or-register').removeClass('hidden').transition({ y: '265px' });
+        $('.login-or-register').removeClass('hidden').transition({ y: '295px' });
     });
+
+    $('.upload-picture').filestyle({
+        image: "/assets/upload-picture.png",
+        imageheight : 31,
+        imagewidth : 148,
+        width : 150
+    });
+    $('.file.upload-picture').css('display', 'none');
 });
