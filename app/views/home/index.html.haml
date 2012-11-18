@@ -1,8 +1,31 @@
-%header
+.header
   %span.tagline Share with the world how a Hero came through for you with Western Union Money transfer
   %span.cta-share SHARE YOUR STORY
 .container.promo
-  .login-or-register
+  .login-or-register.hide-for-small
+    .row
+      .twelve.columns
+        .three.columns
+          .share-your-story
+            = image_tag "/assets/share-story.png"
+            %p You must sign up to vote or share your story
+        .four.columns.offset-by-one
+          .sign-in-with-facebook
+            %p.login Login with Facebook
+            = link_to "", "/auth/facebook", class: "sign-in"
+            %p.recommended (Recommended)
+        .three.columns
+          .old-fashioned
+            %p of if you are old fashioned...
+            %form.register
+              %input{:type => "email", :placeholder=> "Email"}
+              %input{:type => "text", :placeholder=> "Your Name"}
+              %input{:type => "text", :placeholder=> "City"}
+              %input{:type => "text", :placeholder=> "Country"}
+              %input{:type => "password", :placeholder=> "Password"}
+              %input{:type => "password", :placeholder=> "Confirm Password"}
+        .one.columns
+          %a.next
     .icon-holder
       %a.icon-drop-down{:href => "#"}
 .container.body

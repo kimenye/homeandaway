@@ -1,7 +1,7 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-header {
+.header {
   background-color: black;
   background-image: url(/assets/logo.jpg);
   background-repeat: no-repeat;
@@ -131,6 +131,58 @@ p.summary {
 
 .hidden {
   display: none;
+}
+
+.share-your-story {
+  padding-top: 10px;
+}
+
+.share-your-story p {
+  text-align: center;
+  padding-top: 10px;
+}
+
+.sign-in-with-facebook p {
+  text-align: center;
+}
+
+.login {
+  padding-top: 50px;
+}
+
+.recommended {
+  padding-top: 20px;
+}
+
+.sign-in {
+  background-image: url('/assets/sign-in-with-facebook.png');
+  display: block;
+  width: 223px;
+  height: 47px;
+  margin: auto;
+}
+
+.next {
+  background-image: url('/assets/next.png');
+  display: block;
+  width: 82px;
+  height: 40px;
+  margin-top: 95px;
+}
+
+.old-fashioned {
+  padding-top: 10px;
+}
+
+.old-fashioned p {
+  margin-bottom: 5px;
+}
+
+.register input {
+  margin-bottom: 5px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
 }
 
 @media only screen and (max-width: 767px) {
