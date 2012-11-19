@@ -10,8 +10,22 @@ $(document).ready(function() {
 //        });
 //    });
 
+    var visible = false;
+
     $('.icon-drop-down').click(function() {
-        $('.login-or-register').removeClass('hidden').transition({ y: '295px' });
+        if (!visible)
+            $('.login-or-register').transition({ y: '295px' });
+        else
+            $('.login-or-register').transition({ y: '0px' });
+        visible = !visible;
+    });
+
+    $('.icon-drop-down-nominate').click(function() {
+        if (!visible)
+            $('.nominate-your-hero').transition({ y: '295px' });
+        else
+            $('.nominate-your-hero').transition({ y: '0px' });
+        visible = !visible;
     });
 
     $('.upload-picture').filestyle({
