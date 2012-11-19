@@ -35,4 +35,8 @@ $(document).ready(function() {
         width : 150
     });
     $('.file.upload-picture').css('display', 'none');
+
+    $('.next').click(function() {
+
+    });
 });

@@ -2,59 +2,57 @@
   %span.tagline Share with the world how a Hero came through for you with Western Union Money transfer
   %span.cta-share SHARE YOUR STORY
 .container.promo
-  -if current_user.nil?
-    .login-or-register.hide-for-small
-      .row
-        .twelve.columns
-          .three.columns
-            .share-your-story
-              = image_tag "/assets/share-story.png"
-              %p You must sign up to vote or share your story
-          .four.columns.offset-by-one
-            .sign-in-with-facebook
-              %p.login Login with Facebook
-              = link_to "", "/auth/facebook", class: "sign-in"
-              %p.recommended (Recommended)
-          .three.columns
-            .old-fashioned
-              %p of if you are old fashioned...
-              %form.register
-                %input{:type => "email", :placeholder=> "Email"}
-                %input{:type => "text", :placeholder=> "Your Name"}
-                %input{:type => "text", :placeholder=> "City"}
-                %input{:type => "text", :placeholder=> "Country"}
-                %input{:type => "password", :placeholder=> "Password"}
-                %input{:type => "password", :placeholder=> "Confirm Password"}
-                %input.upload-picture{:type => "file"}
-          .one.columns
-            %a.next
-      .icon-holder
-        %a.icon-drop-down{:href => "#"}
-  -else
-    .nominate-your-hero.hide-for-small
-      .row
-        .twelve.columns
-          .three.columns
-            .nominate-your-hero-image
-              = image_tag "/assets/nominate-your-hero.png"
-          .four.columns.offset-by-one
-            .add-your-story
-              %p Add your Story
-              %form.add-story
-                %input{:type => "text", :placeholder => "Give your story a title"}
-                %textarea{:placeholder => "Add your story here...", :rows => "5"}
-                %input.upload-picture{:type => "file"}
-          .three.columns
-            .nominate
-              %p Nominate your Hero
-              %form.nominate
-                %input{:type => "text", :placeholder => "Your Nominee's name"}
-                %input{:type => "text", :placeholder => "Money transfer control number"}
-                -#%a.finish{:href =>"#"}
-                = link_to "", log_out_path, :class=> "finish"
-          .one.columns
-      .icon-holder
-        %a.icon-drop-down-nominate{:href => "#"}
+  %div{:class => "hide-for-small login-or-register " + (!current_user.nil? ? "hidden" : "") }
+    .row
+      .twelve.columns
+        .three.columns
+          .share-your-story
+            = image_tag "/assets/share-story.png"
+            %p You must sign up to vote or share your story
+        .four.columns.offset-by-one
+          .sign-in-with-facebook
+            %p.login Login with Facebook
+            = link_to "", "/auth/facebook", class: "sign-in"
+            %p.recommended (Recommended)
+        .three.columns
+          .old-fashioned
+            %p of if you are old fashioned...
+            %form.register
+              %input{:type => "email", :placeholder=> "Email"}
+              %input{:type => "text", :placeholder=> "Your Name"}
+              %input{:type => "text", :placeholder=> "City"}
+              %input{:type => "text", :placeholder=> "Country"}
+              %input{:type => "password", :placeholder=> "Password"}
+              %input{:type => "password", :placeholder=> "Confirm Password"}
+              %input.upload-picture{:type => "file"}
+        .one.columns
+          %a.next
+    .icon-holder
+      %a.icon-drop-down{:href => "#"}
+  %div{:class => "hide-for-small nominate-your-hero " + (current_user.nil? ? "hidden" : "") }
+    .row
+      .twelve.columns
+        .three.columns
+          .nominate-your-hero-image
+            = image_tag "/assets/nominate-your-hero.png"
+        .four.columns.offset-by-one
+          .add-your-story
+            %p Add your Story
+            %form.add-story
+              %input{:type => "text", :placeholder => "Give your story a title"}
+              %textarea{:placeholder => "Add your story here...", :rows => "5"}
+              %input.upload-picture{:type => "file"}
+        .three.columns
+          .nominate
+            %p Nominate your Hero
+            %form.nominate
+              %input{:type => "text", :placeholder => "Your Nominee's name"}
+              %input{:type => "text", :placeholder => "Money transfer control number"}
+              -#%a.finish{:href =>"#"}
+              = link_to "", log_out_path, :class=> "finish"
+        .one.columns
+    .icon-holder
+      %a.icon-drop-down-nominate{:href => "#"}
 .container.body
   .row.summary
     .three.columns
