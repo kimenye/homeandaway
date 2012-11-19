@@ -90,7 +90,7 @@ p.summary {
 
 .story {
   border: 1px solid #dedede;
-  min-height: 200px;
+  min-height: 250px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
@@ -195,7 +195,7 @@ a.next:hover {
   margin-bottom: 5px;
 }
 
-.register input, .add-story input, .add-story textarea, .nominate input  {
+.register input, .add-story input, .add-story textarea {
   margin-bottom: 5px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;

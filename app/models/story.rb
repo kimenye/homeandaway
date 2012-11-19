@@ -5,7 +5,7 @@ class Story < ActiveRecord::Base
 
   validates_presence_of :title, :body
 
-  has_attached_file :picture, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+  has_attached_file :picture, :styles => { :medium => "300x300>", :thumb => "65x65>" }
 
   def has_nominee?
     return !nominee.nil?
@@ -21,6 +21,10 @@ class Story < ActiveRecord::Base
 
   def can_vote_for_story? user
     res = has_nominee? && nominee.can_be_voted_for_by?(user)
+  end
+
+  def story_text
+    body.split(//).first(170).join + "..."
   end
 
   def votes

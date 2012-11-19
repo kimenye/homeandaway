@@ -50,9 +50,4 @@ class User < ActiveRecord::Base
   def has_pic?
     return !avatar_file_name.nil?
   end
-
-  def display_name
-    return "#{first_name} #{last_name}"
-  end
-
 end

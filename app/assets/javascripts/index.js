@@ -36,6 +36,65 @@ $(document).ready(function() {
     });
     $('.file.upload-picture').css('display', 'none');
 
+
+    $('.finish').click(function() {
+        var hasError = false;
+        var hasNominee = false;
+        var hasMtcn = false;
+        var title = $('#story-title').val();
+        var body = $('#story-body').val();
+
+        var nomineeName = $('#nominee').val();
+        var mtcn = $('#mtcn').val();
+
+
+        if (title == "" || title.length == 0) {
+            $('#story-title').addClass('error');
+            hasError = true;
+        }
+        else
+            $('#story-title').removeClass('error');
+
+
+        if (body == "" || body.length == 0) {
+            $('#story-body').addClass('error');
+            hasError = true;
+        }
+        else
+            $('#story-body').removeClass('error');
+
+        hasNominee = nomineeName == "" || nomineeName.length == 0;
+        hasMtcn = mtcn == "" || mtcn.length == 0
+
+        if (hasNominee || hasMtcn) {
+            //then should have both
+            if (hasNominee && hasMtcn) {
+                $('#mtcn').removeClass('error');
+                $('#nominee').removeClass('error');
+            }
+            else
+            {
+                if (!hasNominee)
+                    $('#nominee').addClass('error');
+                if (!hasMtcn)
+                    $('#mtcn').addClass('error');
+            }
+        }
+
+        if (hasError)
+            return;
+        else {
+            $('#add-story-form').ajaxForm(function() {
+                $('.add-story').transition({
+                    opacity: 0
+                }, function() {
+                    $('.add-story').addClass('hidden');
+                });
+            });
+            $('#add-story-form').submit();
+        }
+    });
+
     $('.next').click(function() {
         var hasError = false;
         var hasConfirmedPassword = false;
@@ -173,5 +232,4 @@ $(document).ready(function() {
         var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(email);
     };
-
 });

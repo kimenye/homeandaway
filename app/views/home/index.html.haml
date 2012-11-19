@@ -33,27 +33,26 @@
     .icon-holder
       %a.icon-drop-down{:href => "#"}
   %div{:class => "hide-for-small nominate-your-hero " + (current_user.nil? ? "hidden" : "") }
-    .row
-      .twelve.columns
-        .three.columns
-          .nominate-your-hero-image
-            = image_tag "/assets/nominate-your-hero.png"
-        .four.columns.offset-by-one
-          .add-your-story
-            %p Add your Story
-            %form.add-story
-              %input#story-title{:type => "text", :placeholder => "Give your story a title"}
-              %textarea{:placeholder => "Add your story here...", :rows => "5"}
-              %input.upload-picture{:type => "file"}
-        .three.columns
-          .nominate
-            %p Nominate your Hero
-            %form.nominate
-              %input{:type => "text", :placeholder => "Your Nominee's name"}
-              %input{:type => "text", :placeholder => "Money transfer control number"}
-              -#%a.finish{:href =>"#"}
-              = link_to "", log_out_path, :class=> "finish"
-        .one.columns
+    %form#add-story-form.add-story{:enctype => "multipart/form-data",
+      :action=> "/users/#{ current_user.nil? ? 0 : current_user.id }/stories", :method => "post"}
+      .row
+        .twelve.columns
+          .three.columns
+            .nominate-your-hero-image
+              = image_tag "/assets/nominate-your-hero.png"
+          .four.columns.offset-by-one
+            .add-your-story
+              %p Add your Story
+              %input#story-title{:type => "text", :placeholder => "Give your story a title", :name => "story[title]", :value=> "Fresh Prince"}
+              %textarea#story-body{:placeholder => "Add your story here...", :rows => "5", :name => "story[body]"} Now this is the story all about how My life got flipped, turned upside down And I'd like to take a minute just sit right there I'll tell you how I became the prince of a town called Bel-air
+              %input.upload-picture{:type => "file", :name => "story[picture]"}
+          .three.columns
+            .nominate
+              %p Nominate your Hero
+              %input#nominee{:type => "text", :placeholder => "Your Nominee's name", :name => "nominee[full_name]"}
+              %input#mtcn{:type => "text", :placeholder => "Money transfer control number", :name=> "nominee[mtcn]"}
+              %a.finish{:href => "#"}
+          .one.columns
     .icon-holder
       %a.icon-drop-down-nominate{:href => "#"}
 .container.body
@@ -96,163 +95,21 @@
                     = msg.title
                 .twelve.columns.story-text
                   %p
-                    = msg.body
+                    = msg.story_text
                 .twelve.columns
                   .four.columns
-                    = image_tag "/assets/200x200.gif"
+                    - if msg.has_pic?
+                      = image_tag msg.picture.url(:thumb)
+                    - else
+                      - if !msg.user.has_pic?
+                        = image_tag "/assets/200x200.gif"
                   .eight.columns
                     %p.name
                       %strong
-                        = msg.user.display_name
+                        = msg.user.name
                     %p.location
                       = image_tag "/assets/location.jpg"
-                      Madrid, Spain
+                      = msg.user.location
   .row.main
     .two.columns.offset-by-ten
       = image_tag "/assets/western-union-logo.jpg"
-
--#.row
-  .twelve.columns
-    .right
-      - if current_user
-        = link_to "Log out", log_out_path
-      - else
-        = link_to "Sign up", sign_up_path
-        |
-        = link_to "Log in", log_in_path
-        |
-        = link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in"
-    %h3 Home and Away
--#.row
-  .seven.columns
-    - if current_user
-      .row.mobile
-        .two.phone-one.columns
-          - if current_user.login_type == "oauth"
-            = image_tag "http://graph.facebook.com/#{current_user.uid}/picture?type=small"
-          - else
-            - if current_user.has_pic?
-              = image_tag current_user.avatar.url(:thumb)
-            -else
-              = image_tag "http://placehold.it/200x200"
-        .ten.phone-three.columns
-          %a.button.radius{"data-reveal-id" => "storyModal", :href => "#"} Post My Story
-      .row
-        .two
-          %h5 My Stories
-        - if current_user.stories.empty?
-          %p No Stories.
-        - else
-          - current_user.stories.each do |story|
-            .row
-              .three.columns
-                - if story.has_pic?
-                  = image_tag story.picture.url(:thumb)
-                - else
-                  = image_tag "http://placehold.it/200x200"
-              .nine.columns
-                %p
-                  %strong
-                    = story.title
-                %p
-                  = story.body
-                -#- if story.nominee.nil?
-                - if story.has_nominee?
-                  %p
-                    %strong
-                      = "Nominee: #{story.nominee.full_name}"
-                - else
-                  %a.button.radius{"data-reveal-id" => "nominateModal#{story.id}", :href => "#"} Nominate your Hero!
-  .four.columns.offset-by-one
-    %dl.tabs
-      %dd.active
-        %a.active{:href => "#recent"} Recent Stories
-      %dd
-        %a{:href => "#featured"} Featured Stories
-    %ul.tabs-content
-      %li#recentTab.active
-        - if @stories and !@stories.empty?
-          - @stories.each do |msg|
-            .row
-              .four.columns
-                - if msg.has_pic?
-                  = image_tag msg.picture.url(:thumb)
-                - else
-                  = image_tag "http://placehold.it/200x200"
-              .eight.columns
-                %p
-                  %strong
-                    = msg.title
-                %p
-                  =msg.body
-                %p
-                  = "By #{msg.user.first_name}"
-                - if msg.has_nominee?
-                  %p
-                    %strong Nominated:
-                    = msg.nominee.full_name
-                  - if current_user and msg.can_vote_for_story?(current_user)
-                    %a.button.radius.vote-link{:href => "#", 'data-id' => "#{msg.nominee.id}"} Vote!
-        - else
-          %p There are no stories... Why not create one?
-      %li#featuredTab
-        - if @featured
-        - else
-          %p There are no stories... Why not create one?
-
-
-
--##storyModal.reveal-modal{:class => "expand, xlarge, large, medium, small"}
-  .row
-    .twelve.columns
-      .row
-        %h5.offset-by-one.columns Tell us your Story
-      .row
-        -if current_user
-          = form_for([current_user, current_user.stories.build], :html => { :multipart => true }) do |f|
-            .row
-              .two.columns
-                = f.label :title, :class => "right inline"
-              .ten.columns
-                = f.text_field :title, :class => "twelve"
-            .row
-              .two.columns
-                = f.label :body, 'Story', :class => "right inline"
-              .ten.columns
-                = f.text_area :body, :class => "twelve", :rows => 10
-            .row
-              .two.columns
-                %label.right.inline Picture
-              .ten.columns
-                = f.file_field :picture
-            .row
-              .offset-by-two.columns
-                = f.submit :class => "button"
-  %a.close-reveal-modal &#215;
--##myStories
-  - if current_user
-    - current_user.stories.each do |story|
-      - if story.id and !story.has_nominee?
-        .reveal-modal{:id => "nominateModal#{story.id}"}
-          .row
-            %h5.offset-by-one.columns Nominate your hero
-          .row
-            = form_for([story, story.nominees.build], :html => { :multipart => true }) do |f|
-              .row
-                .two.columns
-                  = f.label :full_name, :class => "right inline"
-                .ten.columns
-                  = f.text_field :full_name, :class => "ten"
-              .row
-                .two.columns
-                  = label_tag :mtcn, "MTCN", :class => "right inline"
-                .ten.columns
-                  = f.text_field :mtcn, :class => "ten"
-              .row
-                .ten.offset-by-two.columns
-                  %input{:type => "checkbox"}
-                    %span.custom.checkbox I agree to terms and conditions
-              .row
-                .offset-by-two.columns
-                  = f.submit :class => "button radius"
-
