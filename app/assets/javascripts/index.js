@@ -110,19 +110,27 @@ $(document).ready(function() {
             var url = "/users";
             var location = city + ", " + country;
 
-            $.post(url,
-                {
-                    "user[email]": email,
-                    "user[name]" : name,
-                    "user[location]" : location,
-                    "user[password]" : password,
-                    "user[password_confirmation]" : passwordConfirm
-                },
-                function(result) {
+//            $.post(url,
+//                {
+//                    "user[email]": email,
+//                    "user[name]" : name,
+//                    "user[location]" : location,
+//                    "user[password]" : password,
+//                    "user[password_confirmation]" : passwordConfirm
+//                },
+//                function(result) {
+//                    s.stop();
+//                    $('.progress').toggleClass('hidden');
+//                    hideLogin();
+//            });
+
+            $('#location').val(city + ", " + country);
+            $('#registration-form').ajaxForm(function() {
                     s.stop();
                     $('.progress').toggleClass('hidden');
                     hideLogin();
             });
+            $('#registration-form').submit();
         }
     });
 

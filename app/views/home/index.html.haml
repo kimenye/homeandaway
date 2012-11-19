@@ -17,14 +17,15 @@
         .three.columns
           .old-fashioned
             %p of if you are old fashioned...
-            %form#registration-form.register
-              %input#email.required.email{:type => "email", :placeholder=> "Email", :value => "test@somewhere.com"}
-              %input#name{:type => "text", :placeholder=> "Your Name", :value => "Trevor Kimenye"}
-              %input#city{:type => "text", :placeholder=> "City", :value => "Nairobi"}
-              %input#country{:type => "text", :placeholder=> "Country", :value=> "Kenya"}
-              %input#password{:type => "password", :placeholder=> "Password", :value => "abcdef"}
-              %input#password-confirm{:type => "password", :placeholder=> "Confirm Password", :value => "abcdef"}
-              %input#profile-picture.upload-picture{:type => "file"}
+            %form#registration-form.register{:enctype => 'multipart/form-data', :action => "/users", :method => "post"}
+              %input#email.required.email{:type => "email", :placeholder=> "Email", :value => "test@somewhere.com", :name => "user[email]"}
+              %input#name{:type => "text", :placeholder=> "Your Name", :value => "Trevor Kimenye", :name => "user[name]"}
+              %input#city{:type => "text", :placeholder=> "City", :value => "Nairobi", :name => "city"}
+              %input#country{:type => "text", :placeholder=> "Country", :value=> "Kenya", :name=> "country"}
+              %input#password{:type => "password", :placeholder=> "Password", :value => "abcdef", :name => "user[password]"}
+              %input#password-confirm{:type => "password", :placeholder=> "Confirm Password", :value => "abcdef", :name => "user[password_confirmation]"}
+              %input#location{:type => "hidden", :name => "user[location]"}
+              %input#profile-picture.upload-picture{:type => "file", :name=> "user[avatar]"}
         .one.columns
           .spin-holder#spinner
           %a.next

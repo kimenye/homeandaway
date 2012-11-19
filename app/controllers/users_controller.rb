@@ -7,6 +7,9 @@ class UsersController < ApplicationController
   end
 
   def create
+    if params[:user][:avatar] == ""
+      params[:user][:avatar] = nil
+    end
     @user = User.new(params[:user])
     result = @user.save
     if (result)
