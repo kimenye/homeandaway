@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  respond_to :json
+
   def new
     @user = User.new
     @user.login_type = "http"
@@ -6,10 +8,12 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
-    if @user.save
-      redirect_to root_url, :notice => "Signed up!"
-    else
-      render "new"
+    result = @user.save
+    if (result)
+      #mark the user as logged in
+      session[:user_id] = @user.id
+      logged_in = current_user
     end
+    respond_with @user
   end
 end

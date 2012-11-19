@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   include Paperclip::Glue
 
-  attr_accessible :email, :password, :password_confirmation, :first_name, :last_name, :login_type, :avatar
+  attr_accessible :name, :location, :email, :password, :password_confirmation, :first_name, :last_name, :login_type, :avatar
 
   attr_accessor :password
   before_save :encrypt_password
@@ -34,8 +34,8 @@ class User < ActiveRecord::Base
     where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
       user.provider = auth.provider
       user.uid = auth.uid
-      user.first_name = auth.info.first_name
-      user.last_name = auth.info.last_name
+      user.name = auth.info.name
+      user.location = auth.info.location
       user.email = auth.info.email
       user.login_type = "oauth"
 

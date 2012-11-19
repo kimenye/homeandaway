@@ -17,16 +17,18 @@
         .three.columns
           .old-fashioned
             %p of if you are old fashioned...
-            %form.register
-              %input{:type => "email", :placeholder=> "Email"}
-              %input{:type => "text", :placeholder=> "Your Name"}
-              %input{:type => "text", :placeholder=> "City"}
-              %input{:type => "text", :placeholder=> "Country"}
-              %input{:type => "password", :placeholder=> "Password"}
-              %input{:type => "password", :placeholder=> "Confirm Password"}
-              %input.upload-picture{:type => "file"}
+            %form#registration-form.register
+              %input#email.required.email{:type => "email", :placeholder=> "Email", :value => "test@somewhere.com"}
+              %input#name{:type => "text", :placeholder=> "Your Name", :value => "Trevor Kimenye"}
+              %input#city{:type => "text", :placeholder=> "City", :value => "Nairobi"}
+              %input#country{:type => "text", :placeholder=> "Country", :value=> "Kenya"}
+              %input#password{:type => "password", :placeholder=> "Password", :value => "abcdef"}
+              %input#password-confirm{:type => "password", :placeholder=> "Confirm Password", :value => "abcdef"}
+              %input#profile-picture.upload-picture{:type => "file"}
         .one.columns
+          .spin-holder#spinner
           %a.next
+          %p.progress.hidden Saving...
     .icon-holder
       %a.icon-drop-down{:href => "#"}
   %div{:class => "hide-for-small nominate-your-hero " + (current_user.nil? ? "hidden" : "") }
@@ -39,7 +41,7 @@
           .add-your-story
             %p Add your Story
             %form.add-story
-              %input{:type => "text", :placeholder => "Give your story a title"}
+              %input#story-title{:type => "text", :placeholder => "Give your story a title"}
               %textarea{:placeholder => "Add your story here...", :rows => "5"}
               %input.upload-picture{:type => "file"}
         .three.columns

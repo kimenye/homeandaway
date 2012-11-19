@@ -162,12 +162,21 @@ p.summary {
   margin: auto;
 }
 
-.next {
+a.next {
   background-image: url('/assets/next.png');
   display: block;
   width: 82px;
   height: 40px;
   margin-top: 95px;
+}
+
+a.next:hover {
+  cursor: pointer;
+}
+
+.spin-holder {
+  margin-top: 65px;
+  margin-left: 10px;
 }
 
 .finish {
@@ -191,6 +200,10 @@ p.summary {
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
+}
+
+input.error {
+    background-color: rgb(198, 15, 19);
 }
 
 .nominate-your-hero p {

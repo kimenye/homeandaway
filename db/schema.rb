@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121116122314) do
+ActiveRecord::Schema.define(:version => 20121119130726) do
 
   create_table "nominees", :force => true do |t|
     t.integer  "story_id"
@@ -43,19 +43,18 @@ ActiveRecord::Schema.define(:version => 20121116122314) do
     t.string   "password_hash"
     t.string   "password_salt"
     t.string   "login_type"
-    t.string   "first_name"
-    t.string   "last_name"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
     t.string   "provider"
     t.string   "uid"
-    t.string   "name"
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string   "name"
+    t.string   "location"
   end
 
   create_table "votes", :force => true do |t|
