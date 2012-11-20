@@ -1,5 +1,12 @@
 class StoriesController < ApplicationController
 
+  def show
+    @num_stories = Story.count
+    @num_nominees = Nominee.count
+    @num_votes = Vote.count
+    @story = Story.find(params[:id])
+  end
+
   respond_to :json
 
   def create

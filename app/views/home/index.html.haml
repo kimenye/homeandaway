@@ -1,60 +1,3 @@
-.header
-  %span.tagline Share with the world how a Hero came through for you with Western Union Money transfer
-  %span.cta-share SHARE YOUR STORY
-.container.promo
-  %div{:class => "hide-for-small login-or-register " + (!current_user.nil? ? "hidden" : "") }
-    .row
-      .twelve.columns
-        .three.columns
-          .share-your-story
-            = image_tag "/assets/share-story.png"
-            %p You must sign up to vote or share your story
-        .four.columns.offset-by-one
-          .sign-in-with-facebook
-            %p.login Login with Facebook
-            = link_to "", "/auth/facebook", class: "sign-in"
-            %p.recommended (Recommended)
-        .three.columns
-          .old-fashioned
-            %p of if you are old fashioned...
-            %form#registration-form.register{:enctype => 'multipart/form-data', :action => "/users", :method => "post"}
-              %input#email.required.email{:type => "email", :placeholder=> "Email", :value => "test@somewhere.com", :name => "user[email]"}
-              %input#name{:type => "text", :placeholder=> "Your Name", :value => "Trevor Kimenye", :name => "user[name]"}
-              %input#city{:type => "text", :placeholder=> "City", :value => "Nairobi", :name => "city"}
-              %input#country{:type => "text", :placeholder=> "Country", :value=> "Kenya", :name=> "country"}
-              %input#password{:type => "password", :placeholder=> "Password", :value => "abcdef", :name => "user[password]"}
-              %input#password-confirm{:type => "password", :placeholder=> "Confirm Password", :value => "abcdef", :name => "user[password_confirmation]"}
-              %input#location{:type => "hidden", :name => "user[location]"}
-              %input#profile-picture.upload-picture{:type => "file", :name=> "user[avatar]"}
-        .one.columns
-          .spin-holder#spinner
-          %a.next
-          %p.progress.hidden Saving...
-    .icon-holder
-      %a.icon-drop-down{:href => "#"}
-  %div{:class => "hide-for-small nominate-your-hero " + (current_user.nil? ? "hidden" : "") }
-    %form#add-story-form.add-story{:enctype => "multipart/form-data",
-      :action=> "/users/#{ current_user.nil? ? 0 : current_user.id }/stories", :method => "post"}
-      .row
-        .twelve.columns
-          .three.columns
-            .nominate-your-hero-image
-              = image_tag "/assets/nominate-your-hero.png"
-          .four.columns.offset-by-one
-            .add-your-story
-              %p Add your Story
-              %input#story-title{:type => "text", :placeholder => "Give your story a title", :name => "story[title]", :value=> "Fresh Prince"}
-              %textarea#story-body{:placeholder => "Add your story here...", :rows => "5", :name => "story[body]"} Now this is the story all about how My life got flipped, turned upside down And I'd like to take a minute just sit right there I'll tell you how I became the prince of a town called Bel-air
-              %input.upload-picture{:type => "file", :name => "story[picture]"}
-          .three.columns
-            .nominate
-              %p Nominate your Hero
-              %input#nominee{:type => "text", :placeholder => "Your Nominee's name", :name => "nominee[full_name]"}
-              %input#mtcn{:type => "text", :placeholder => "Money transfer control number", :name=> "nominee[mtcn]"}
-              %a.finish{:href => "#"}
-          .one.columns
-    .icon-holder
-      %a.icon-drop-down-nominate{:href => "#"}
 .container.body
   .row.summary
     .three.columns
@@ -92,7 +35,8 @@
               .story
                 .twelve.columns
                   %h4.subheader
-                    = msg.title
+                    %a{:href => "stories/#{msg.id}"}
+                      = msg.title
                 .twelve.columns.story-text
                   %p
                     = msg.story_text
