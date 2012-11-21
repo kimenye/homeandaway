@@ -123,6 +123,34 @@ p.summary {
   font-size: 18px;
 }
 
+.num-votes {
+  background: url('/assets/votes.png') no-repeat;
+  padding-left: 30px;
+  font-size: 20px;
+}
+
+.story-title {
+  margin-bottom: 2px;
+}
+
+.author {
+  font-weight: 600;
+}
+
+.main h4 {
+  margin-top: 0px;
+  font-size: 20px;
+}
+
+.avatar img {
+  width: 55px;
+  height: 55px
+}
+
+.avatar {
+  text-align: center
+}
+
 .rounded {
   -webkit-border-top-left-radius: 10px;
   -webkit-border-top-right-radius: 10px;

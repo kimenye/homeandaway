@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
 
   attr_accessor :password
   before_save :encrypt_password
-  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "55x55>" }, :default_url => "/assets/unknown-avatar.png"
 
   validates_confirmation_of :password
   validates_presence_of :password, :on => :create
@@ -49,5 +49,9 @@ class User < ActiveRecord::Base
 
   def has_pic?
     return !avatar_file_name.nil?
+  end
+
+  def is_oauth?
+    return login_type == "oauth"
   end
 end
