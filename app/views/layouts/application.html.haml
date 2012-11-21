@@ -20,6 +20,7 @@
     = csrf_meta_tags
   %body
     .header
+      %a.logo{:href => "/"}
       %span.tagline Share with the world how a Hero came through for you with Western Union Money transfer
       %span.cta-share SHARE YOUR STORY
     .container.promo
@@ -77,3 +78,6 @@
         .icon-holder
           %a.icon-drop-down-nominate{:href => "#"}
     = yield
+    .row.main
+      .two.columns.offset-by-ten
+        = image_tag "/assets/western-union-logo.jpg"

@@ -35,7 +35,7 @@
               .story
                 .twelve.columns
                   %h4.subheader
-                    %a{:href => "stories/#{msg.id}"}
+                    %a.story-header{:href => "stories/#{msg.id}"}
                       = msg.title
                 .twelve.columns.story-text
                   %p
@@ -54,6 +54,3 @@
                     %p.location
                       = image_tag "/assets/location.jpg"
                       = msg.user.location
-  .row.main
-    .two.columns.offset-by-ten
-      = image_tag "/assets/western-union-logo.jpg"

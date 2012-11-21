@@ -3,9 +3,6 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .header {
   background-color: black;
-  background-image: url(/assets/logo.jpg);
-  background-repeat: no-repeat;
-  background-position: center 30px;
   height: 180px;
   width: 100%;
   border-bottom: 5px solid #ffdd00;
@@ -13,10 +10,20 @@
   text-align: center;
   position: relative;
   z-index: 10000;
+  padding-top: 10px;
+}
+
+.logo {
+  background-image: url(/assets/logo.jpg);
+  background-repeat: no-repeat;
+  display: block;
+  margin: auto;
+  height: 52px;
+  width: 291px;
 }
 
 .tagline {
-  padding-top: 90px;
+  padding-top: 30px;
   font-weight: 600;
   display: block;
 }
@@ -94,6 +101,10 @@ p.summary {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
+}
+
+.story-header {
+  color: #707070;
 }
 
 .story-text {
@@ -208,6 +219,15 @@ input.error {
 
 .nominate-your-hero p {
   padding-top: 10px;
+}
+
+.border-right {
+  border-right: 3px solid #a6a8a1;
+}
+
+.example .row .column, .example .row .columns {
+  background:#eee;
+  border: 1px solid #ddd;
 }
 
 @media only screen and (max-width: 767px) {
