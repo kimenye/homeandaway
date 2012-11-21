@@ -43,11 +43,12 @@
             %span.author
               = @story.user.name
             = image_tag "/assets/location.jpg"
-            = @story.user.location
-        .three.columns
+            %span.subheader
+              = @story.user.location
+        .three.columns.border-left
           %h4.subheader.num-votes
             = "#{@story.votes} Votes"
-        .two.columns
+        .two.columns.border-left.vote-here
           = image_tag "/assets/vote-here.png"
       .row
         .eleven.offset-by-one.columns
