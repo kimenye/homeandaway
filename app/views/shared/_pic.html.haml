@@ -1,0 +1,7 @@
+- if story.has_pic?
+  = image_tag story.picture.url(:thumb)
+- else
+  - if story.user.is_oauth?
+    = image_tag "", :class => "avatar"
+  - else
+    = image_tag story.user.avatar.url(:thumb), :size => "55x55"

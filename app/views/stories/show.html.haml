@@ -28,15 +28,9 @@
   .row.main
     .eight.columns
       .row
-        .two.columns.avatar
-          - if @story.has_pic?
-            = image_tag @story.picture.url(:thumb)
-          - else
-            - if @story.user.is_oauth?
-              = image_tag "", :class => "avatar"
-            - else
-              = image_tag @story.user.avatar.url(:thumb), :size => "55x55"
-        .five.columns
+        .seven.columns
+          .story-pic
+            = render :partial => "shared/pic", :locals => { :story => @story }
           %h4.subheader.story-title
             = @story.title
           .poster
@@ -49,10 +43,11 @@
           %h4.subheader.num-votes
             = "#{@story.votes} Votes"
         .two.columns.border-left.vote-here
-          %a
+          %a.vote-now{:href => "#"}
             = image_tag "/assets/vote-here.png"
       .row
-        .eleven.offset-by-one.columns
+        %p
+        .twelve.columns
           %p
             = @story.body
       - if !@other_stories.nil? and !@other_stories.empty?
