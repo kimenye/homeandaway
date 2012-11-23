@@ -7,16 +7,11 @@
     %p
       = msg.story_text
   .twelve.columns
-    .four.columns
-      - if msg.has_pic?
-        = image_tag msg.picture.url(:thumb)
-      - else
-        - if !msg.user.has_pic?
-          = image_tag "/assets/200x200.gif"
-    .eight.columns
-      %p.name
-        %strong
-          = msg.user.name
-      %p.location
-        = image_tag "/assets/location.jpg"
-        = msg.user.location
+    .story-pic
+      = render :partial => "shared/pic", :locals => { :story => msg }
+    %p.name
+      %strong
+        = msg.user.name
+    %p.location
+      = image_tag "/assets/location.jpg"
+      = msg.user.location

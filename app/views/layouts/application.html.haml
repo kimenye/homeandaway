@@ -40,12 +40,12 @@
               .old-fashioned
                 %p of if you are old fashioned...
                 %form#registration-form.register{:enctype => 'multipart/form-data', :action => "/users", :method => "post"}
-                  %input#email.required.email{:type => "email", :placeholder=> "Email", :value => "test@somewhere.com", :name => "user[email]"}
-                  %input#name{:type => "text", :placeholder=> "Your Name", :value => "Trevor Kimenye", :name => "user[name]"}
-                  %input#city{:type => "text", :placeholder=> "City", :value => "Nairobi", :name => "city"}
-                  %input#country{:type => "text", :placeholder=> "Country", :value=> "Kenya", :name=> "country"}
-                  %input#password{:type => "password", :placeholder=> "Password", :value => "abcdef", :name => "user[password]"}
-                  %input#password-confirm{:type => "password", :placeholder=> "Confirm Password", :value => "abcdef", :name => "user[password_confirmation]"}
+                  %input#email.required.email{:type => "email", :placeholder=> "Email", :name => "user[email]"}
+                  %input#name{:type => "text", :placeholder=> "Your Name", :name => "user[name]"}
+                  %input#city{:type => "text", :placeholder=> "City", :name => "city"}
+                  %input#country{:type => "text", :placeholder=> "Country", :name=> "country"}
+                  %input#password{:type => "password", :placeholder=> "Password", :name => "user[password]"}
+                  %input#password-confirm{:type => "password", :placeholder=> "Confirm Password", :name => "user[password_confirmation]"}
                   %input#location{:type => "hidden", :name => "user[location]"}
                   %input#profile-picture.upload-picture{:type => "file", :name=> "user[avatar]"}
             .one.columns
@@ -65,8 +65,8 @@
               .four.columns.offset-by-one
                 .add-your-story
                   %p Add your Story
-                  %input#story-title{:type => "text", :placeholder => "Give your story a title", :name => "story[title]", :value=> "Fresh Prince"}
-                  %textarea#story-body{:placeholder => "Add your story here...", :rows => "5", :name => "story[body]"} Now this is the story all about how My life got flipped, turned upside down And I'd like to take a minute just sit right there I'll tell you how I became the prince of a town called Bel-air
+                  %input#story-title{:type => "text", :placeholder => "Give your story a title", :name => "story[title]" }
+                  %textarea#story-body{:placeholder => "Add your story here...", :rows => "5", :name => "story[body]"}
                   %input.upload-picture{:type => "file", :name => "story[picture]"}
               .three.columns
                 .nominate
