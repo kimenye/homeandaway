@@ -5,4 +5,10 @@ class HomeController < ApplicationController
     @num_nominees = Nominee.count
     @num_votes = Vote.count
   end
+
+  respond_to :json
+
+  def logged_in
+    respond_with current_user
+  end
 end

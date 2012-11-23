@@ -175,25 +175,15 @@ $(document).ready(function() {
             var url = "/users";
             var location = city + ", " + country;
 
-//            $.post(url,
-//                {
-//                    "user[email]": email,
-//                    "user[name]" : name,
-//                    "user[location]" : location,
-//                    "user[password]" : password,
-//                    "user[password_confirmation]" : passwordConfirm
-//                },
-//                function(result) {
-//                    s.stop();
-//                    $('.progress').toggleClass('hidden');
-//                    hideLogin();
-//            });
-
             $('#location').val(city + ", " + country);
             $('#registration-form').ajaxForm(function() {
+                $.get('/verify_login', function(data) {
+                    var id = data.id;
                     s.stop();
                     $('.progress').toggleClass('hidden');
+                    $('#add-story-form').attr('action', "/users/" + id + "/stories");
                     hideLogin();
+                });
             });
             $('#registration-form').submit();
         }

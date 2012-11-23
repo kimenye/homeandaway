@@ -52,6 +52,10 @@
         .twelve.columns
           %p
             = @story.body
+      .row
+        %p
+        .twelve.columns.reviews
+          .fb-comments{"data-href" => "#{request.protocol}#{request.host_with_port}#{request.fullpath}", "data-num-posts" => "5" }
       - if !@other_stories.nil? and !@other_stories.empty?
         .row
           .twelve.columns
