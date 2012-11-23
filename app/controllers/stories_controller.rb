@@ -5,7 +5,11 @@ class StoriesController < ApplicationController
     @num_nominees = Nominee.count
     @num_votes = Vote.count
     @story = Story.find(params[:id])
-    #@other_stories = Story.find()
+    prev = Story.where("id > ?", params[:id]).first
+    nxt = Story.where("id < ?", params[:id]).first
+    @other_stories = []
+    @other_stories.push(prev) if !prev.nil?
+    @other_stories.push(nxt) if !nxt.nil?
   end
 
   respond_to :json

@@ -55,9 +55,14 @@
         .eleven.offset-by-one.columns
           %p
             = @story.body
-      .row
-        .twelve.columns
-          %h3.subheader Other Stories
+      - if !@other_stories.nil? and !@other_stories.empty?
+        .row
+          .twelve.columns
+            %h3.subheader Other Stories
+            %ul.block-grid.two-up.mobile-one-up
+              - @other_stories.each do |msg|
+                %li
+                  = render :partial => "shared/story", :locals => { :msg => msg }
     .four.columns
       = image_tag "/assets/sidebar-share.png"
   -#%section#mainContent.main
