@@ -258,8 +258,25 @@ input.error {
   border-left: 3px solid #a6a8a1;
 }
 
-.vote-here img {
-  margin-bottom: 14px;
+.vote-here {
+  min-height: 42px;
+}
+
+.vote-now {
+  background: url(/assets/icons-vote.png) no-repeat;
+  background-position: 0 0;
+  width: 78px;
+  height: 28px;
+  display: block;
+}
+
+.icon-thank-you {
+  background-position: 0 -28px;
+  height: 31px;
+}
+
+a.icon-thank-you:hover {
+  cursor: default;
 }
 
 .example .row .column, .example .row .columns {

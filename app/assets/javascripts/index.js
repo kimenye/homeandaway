@@ -1,15 +1,4 @@
 $(document).ready(function() {
-//    $('.vote-link').click(function(link) {
-//        var link = $(this);
-//        var id = link.data('id');
-//
-//        var url = "/nominees/" + id + "/votes";
-//
-//        $.post(url, function(result) {
-//            link.remove();
-//        });
-//    });
-
     var visible = false;
 
     $('.icon-drop-down').click(function() {
@@ -34,8 +23,24 @@ $(document).ready(function() {
         imagewidth : 148,
         width : 150
     });
-    $('.file.upload-picture').css('display', 'none');
 
+    $('.vote-now').click(function(link) {
+        var link = $(this);
+
+        var id = link.data('id');
+        var enabled = link.data('enabled');
+
+        if (enabled) {
+            var url = "/nominees/" + id + "/votes";
+            $.post(url, function(result) {
+                link.addClass('icon-thank-you');
+                var numVotes = $('.num-votes').data('num-votes') + 1;
+                $('.num-votes').html(numVotes + " Votes");
+            });
+        }
+    });
+
+    $('.file.upload-picture').css('display', 'none');
 
     $('.finish').click(function() {
         var hasError = false;
@@ -64,7 +69,7 @@ $(document).ready(function() {
             $('#story-body').removeClass('error');
 
         hasNominee = nomineeName == "" || nomineeName.length == 0;
-        hasMtcn = mtcn == "" || mtcn.length == 0
+        hasMtcn = mtcn == "" || mtcn.length == 0;
 
         if (hasNominee || hasMtcn) {
             //then should have both

@@ -40,11 +40,12 @@
             %span.subheader
               = @story.user.location
         .three.columns.border-left
-          %h4.subheader.num-votes
+          %h4.subheader.num-votes{"data-num-votes" => @story.votes}
             = "#{@story.votes} Votes"
         .two.columns.border-left.vote-here
-          %a.vote-now{:href => "#"}
-            = image_tag "/assets/vote-here.png"
+          - if current_user and @story.can_vote_for_story?(current_user)
+            %a.vote-now{:href => "#", "data-id" => @story.nominee.id}
+          - else
       .row
         %p
         .twelve.columns
