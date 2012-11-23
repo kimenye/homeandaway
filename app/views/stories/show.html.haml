@@ -49,15 +49,15 @@
           %h4.subheader.num-votes
             = "#{@story.votes} Votes"
         .two.columns.border-left.vote-here
-          = image_tag "/assets/vote-here.png"
+          %a
+            = image_tag "/assets/vote-here.png"
       .row
         .eleven.offset-by-one.columns
           %p
             = @story.body
       .row
-        .eleven.offset-by-one.columns
-          %p Sharing and other stuff...
-          %h5 Other Stories
+        .twelve.columns
+          %h3.subheader Other Stories
     .four.columns
       = image_tag "/assets/sidebar-share.png"
   -#%section#mainContent.main

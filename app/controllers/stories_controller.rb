@@ -5,6 +5,7 @@ class StoriesController < ApplicationController
     @num_nominees = Nominee.count
     @num_votes = Vote.count
     @story = Story.find(params[:id])
+    #@other_stories = Story.find()
   end
 
   respond_to :json
