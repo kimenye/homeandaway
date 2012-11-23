@@ -2,6 +2,6 @@
   = image_tag story.picture.url(:thumb)
 - else
   - if story.user.is_oauth?
-    = image_tag "", :class => "avatar"
+    = image_tag "http://graph.facebook.com/#{story.user.uid}/picture", :class => "avatar"
   - else
     = image_tag story.user.avatar.url(:thumb), :size => "55x55"
