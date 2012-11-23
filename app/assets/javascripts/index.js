@@ -24,20 +24,21 @@ $(document).ready(function() {
         width : 150
     });
 
-    $('.vote-now').click(function(link) {
+    $('.vote-link').click(function(link) {
         var link = $(this);
 
         var id = link.data('id');
-        var enabled = link.data('enabled');
 
-        if (enabled) {
-            var url = "/nominees/" + id + "/votes";
-            $.post(url, function(result) {
-                link.addClass('icon-thank-you');
-                var numVotes = $('.num-votes').data('num-votes') + 1;
-                $('.num-votes').html(numVotes + " Votes");
-            });
-        }
+        var url = "/nominees/" + id + "/votes";
+        $.post(url, function(result) {
+            link.addClass('icon-thank-you');
+            link.removeClass('vote-link');
+            var numVotes = $('.num-votes').data('num-votes') + 1;
+            var totalVotes = $('.summary-num-votes').data('num-votes') + 1;
+            $('.summary-num-votes').html(totalVotes);
+
+            $('.num-votes').html(numVotes + " Votes");
+        });
     });
 
     $('.file.upload-picture').css('display', 'none');

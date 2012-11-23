@@ -13,7 +13,7 @@
         Nominees
     .three.columns
       %p.summary
-        %strong
+        %strong.summary-num-votes{"data-num-votes" => @num_votes}
           = "#{@num_votes}"
         Votes Cast
     .three.columns
@@ -44,8 +44,9 @@
             = "#{@story.votes} Votes"
         .two.columns.border-left.vote-here
           - if current_user and @story.can_vote_for_story?(current_user)
-            %a.vote-now{:href => "#", "data-id" => @story.nominee.id}
+            %a.vote-now.vote-link{:href => "#", "data-id" => @story.nominee.id}
           - else
+            %a.vote-now.icon-thank-you
       .row
         %p
         .twelve.columns
