@@ -202,6 +202,7 @@ p.summary {
 
 .main {
   background-color: #ffffff;
+  position: relative;
 }
 
 .story {
@@ -390,6 +391,30 @@ input.error {
 
 a.icon-thank-you:hover {
   cursor: default;
+}
+
+.previous_page, .next_page {
+  background: url(/assets/pagination.png);
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  display: block;
+  top: 150px;
+}
+
+
+.previous_page {
+  background-position: 0 0;
+  left: -25px;
+}
+
+.next_page {
+  background-position: 0 35px;
+  right: -20px;
+}
+
+.right {
+  background-position: 0 35px;
 }
 
 .example .row .column, .example .row .columns {

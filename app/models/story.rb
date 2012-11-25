@@ -7,6 +7,8 @@ class Story < ActiveRecord::Base
 
   has_attached_file :picture, :styles => { :medium => "300x300>", :thumb => "65x65>" }
 
+  self.per_page = 6
+
   def has_nominee?
     return !nominee.nil?
   end

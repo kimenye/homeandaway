@@ -27,6 +27,7 @@
     .twelve.columns
       %h4.subheader Most Recent Stories
   .row.main
+    = will_paginate @stories, :page_links => false, :previous_label => "", :next_label => "", :container => false
     .twelve.columns
       - if @stories and !@stories.empty?
         %ul.block-grid.three-up.mobile-one-up

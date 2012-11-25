@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @stories = Story.last(6).reverse
+    @stories = Story.page(1).order('created_at DESC')
     @num_stories = Story.count
     @num_nominees = Nominee.count
     @num_votes = Vote.count

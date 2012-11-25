@@ -1,7 +1,7 @@
 $(document).ready(function() {
     var visible = false;
 
-    $('#slider').orbit({ fluid: '16x6', timer: false,
+    $('#slider').orbit({ fluid: '16x6', timer: true,
         afterSlideChange: function(prev, active) {
             var currSlide = currentSlideIdx(active);
             if (currSlide == 1) {

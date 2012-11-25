@@ -1,0 +1,12 @@
+.container.yellow
+  .row.spacer
+  .row.main.rounded
+    %br
+  .row.main
+    = will_paginate @stories, :page_links => false, :previous_label => "", :next_label => "", :container => false
+    .twelve.columns
+      - if @stories and !@stories.empty?
+        %ul.block-grid.three-up.mobile-one-up
+          - @stories.each do |msg|
+            %li
+              = render :partial => "shared/story", :locals => { :msg => msg }
