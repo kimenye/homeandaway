@@ -7,15 +7,16 @@
     %p
       = msg.story_text
   .twelve.columns
-    .nine.columns
-      .story-pic
-        = render :partial => "shared/pic", :locals => { :story => msg }
-      %p
-        %strong
-          = msg.user.name
-      %p.location
-        = image_tag "/assets/location.jpg"
-        = msg.user.location
-    .three.columns
-      %h6.subheader.short-votes
-        = "#{msg.votes} Votes"
+    .row
+      .nine.columns
+        .story-pic
+          = render :partial => "shared/pic", :locals => { :story => msg }
+        %p
+          %strong
+            = msg.user.name
+        %p.location
+          = image_tag "/assets/location.jpg"
+          = msg.user.location
+      .three.columns
+        %h6.subheader.short-votes
+          = "#{msg.votes} Votes"
