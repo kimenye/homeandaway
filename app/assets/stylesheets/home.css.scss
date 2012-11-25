@@ -102,7 +102,7 @@ a.icon-drop-down:hover, a.icon-drop-down-nominate:hover {
   padding-top: 0px;
 }
 
-.timeline .tagline h3, strong {
+.timeline .tagline h3, .timeline strong {
   color: #ffde00;
 }
 
@@ -124,7 +124,31 @@ a.icon-drop-down:hover, a.icon-drop-down-nominate:hover {
   display: block;
   position: relative;
   left: 55%;
-  top: -60px;
+  top: -50px;
+}
+
+.timeline-icon {
+  background: url(/assets/timeline-icons.png) no-repeat;
+  width: 356px;
+  height: 267px;
+  position: absolute;
+  top: -34px;
+  left: 18%;
+}
+
+
+.timeline-icon-a {
+  background-position: 0 -534px;
+}
+
+
+.timeline-icon-b {
+  background-position: 0 -267px;
+}
+
+
+.timeline-icon-c {
+  background-position: 0 0;
 }
 
 .body {
