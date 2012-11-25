@@ -20,6 +20,22 @@ $(document).ready(function() {
         visible = !visible;
     });
 
+    $('.timeline .cta').click(function() {
+        revealDropDown();
+    });
+
+    function revealDropDown() {
+        if (isLoggedIn())
+            dropDown($('.nominate-your-hero'));
+        else
+            dropDown($('.login-or-register'));
+        visible = !visible;
+    }
+
+    function isLoggedIn() {
+        return $('.icon-drop-down-nominate').length > 0;
+    }
+
     function dropDown(element) {
         hideSlider();
         element.transition({ y: '295px' });

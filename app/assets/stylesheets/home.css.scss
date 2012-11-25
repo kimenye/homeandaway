@@ -117,6 +117,16 @@ a.icon-drop-down:hover, a.icon-drop-down-nominate:hover {
   text-align: justify;
 }
 
+.timeline .cta {
+  width: 175px;
+  height: 38px;
+  background-image: url(/assets/share-your-story.png);
+  display: block;
+  position: relative;
+  left: 55%;
+  top: -60px;
+}
+
 .body {
   background-color: #ffffff;
 }
