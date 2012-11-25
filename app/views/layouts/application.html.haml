@@ -61,8 +61,6 @@
               .spin-holder#spinner
               %a.next
               %p.progress.hidden Saving...
-        -#.icon-holder
-          %a.icon-drop-down{:href => "#"}
       %div{:class => "hide-for-small nominate-your-hero " + (current_user.nil? ? "hidden" : "") }
         %form#add-story-form.add-story{:enctype => "multipart/form-data",
           :action=> "/users/#{ current_user.nil? ? 0 : current_user.id }/stories", :method => "post"}
@@ -86,7 +84,7 @@
               .one.columns
                 %a{:href => "/log_out"} Logout
       .icon-holder
-        %a.icon-drop-down-nominate{:href => "#"}
+        %a{:href => "#", :class => current_user.nil? ? "icon-drop-down" : "icon-drop-down-nominate" }
       -##slider
         .timeline.A
           .tagline

@@ -10,15 +10,24 @@ $(document).ready(function() {
             $('.icon-holder').transition({ y: '295px' });
         }
         else
+        {
             $('.login-or-register').transition({ y: '0px' });
+            $('.icon-holder').transition({ y: '0px' });
+        }
         visible = !visible;
     });
 
     $('.icon-drop-down-nominate').click(function() {
-        if (!visible)
+        if (!visible) {
             $('.nominate-your-hero').transition({ y: '295px' });
+            $('.icon-holder').transition({ y: '295px' });
+        }
         else
+        {
             $('.nominate-your-hero').transition({ y: '0px' });
+            $('.icon-holder').transition({ y: '0px' });
+        }
+
         visible = !visible;
     });
 

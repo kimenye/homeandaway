@@ -38,16 +38,15 @@
 .login-or-register, .nominate-your-hero {
   background-color: #ffdd00;
   height: 300px;
-  position: absolute;
+  position: relative;
   width: 100%;
   top: -300px;
 }
 
 .icon-holder {
   position: relative;
-  //top: 300px;
-  //width: 100%;
-  //z-index: 20000;
+  top: -300px;
+  z-index: 20000;
 }
 
 a.icon-drop-down, a.icon-drop-down-nominate {
