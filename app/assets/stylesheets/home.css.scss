@@ -151,6 +151,35 @@ a.icon-drop-down:hover, a.icon-drop-down-nominate:hover {
   background-position: 0 0;
 }
 
+div.orbit-wrapper div.slider-nav span {
+  width: 101px;
+  height: 79px;
+}
+
+div.orbit-wrapper div.slider-nav span.right-1 {
+  background: url('/assets/right-b.png') no-repeat;
+}
+
+div.orbit-wrapper div.slider-nav span.left-1 {
+  background: url('/assets/left-b.png') no-repeat;
+}
+
+div.orbit-wrapper div.slider-nav span.right-2 {
+  background: url('/assets/right-a.png') no-repeat;
+}
+
+div.orbit-wrapper div.slider-nav span.left-2 {
+  background: url('/assets/left-a.png') no-repeat;
+}
+
+div.orbit-wrapper div.slider-nav span.right-0 {
+  background: url('/assets/right-c.png') no-repeat;
+}
+
+div.orbit-wrapper div.slider-nav span.left-0 {
+  background: url('/assets/left-c.png') no-repeat;
+}
+
 .body {
   background-color: #ffffff;
 }

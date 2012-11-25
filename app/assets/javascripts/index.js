@@ -1,7 +1,37 @@
 $(document).ready(function() {
     var visible = false;
 
-    $('#slider').orbit({ fluid: '16x6' });
+    $('#slider').orbit({ fluid: '16x6', timer: false,
+        afterSlideChange: function(prev, active) {
+            var currSlide = currentSlideIdx(active);
+            if (currSlide == 1) {
+                $('.slider-nav .right').removeClass('right-1').addClass('right-2');
+                $('.slider-nav .left').removeClass('left-1').addClass('left-0');
+            }
+            else if (currSlide == 2) {
+                $('.slider-nav .right').removeClass('right-2').addClass('right-0');
+                $('.slider-nav .left').removeClass('left-2').addClass('left-1');
+            }
+            else {
+                $('.slider-nav .right').removeClass('right-0').addClass('right-1');
+                $('.slider-nav .left').removeClass('left-0').addClass('left-2');
+            }
+        },
+        afterLoadComplete: function() {
+            $('.slider-nav .right').addClass('right-1');
+            $('.slider-nav .left').addClass('left-2');
+        }
+    });
+
+
+    function currentSlideIdx(elem) {
+        if (elem.hasClass('slide-1'))
+            return 0;
+        else if (elem.hasClass('slide-2'))
+            return 1;
+        else
+            return 2;
+    }
 
 
     $('.icon-drop-down').click(function() {
