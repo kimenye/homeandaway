@@ -73,10 +73,15 @@ a.icon-drop-down:hover, a.icon-drop-down-nominate:hover {
   position: relative;
 }
 
+.orbit-wrapper {
+  top: -300px;
+  position: relative;
+}
+
 .timeline {
   border-top: 3px solid #ffffff;
   position: relative;
-  //top: 100px;
+  top: 30px;
 }
 
 .device {
@@ -84,19 +89,29 @@ a.icon-drop-down:hover, a.icon-drop-down-nominate:hover {
   height: 26px;
   width: 26px;
   position: relative;
-  //top: -70px;
+  top: -70px;
   left: 715px;
 }
 
 .timeline .tagline {
   position: relative;
-  //top: -55px;
+  top: -50px;
   left: 750px;
   padding-top: 0px;
 }
 
-.timeline .tagline h3 {
+.timeline .tagline h3, strong {
   color: #ffde00;
+}
+
+.timeline p {
+  color: #ffffff;
+  display: block;
+  width: 380px;
+  position: relative;
+  left: 750px;
+  top: -60px;
+  text-align: justify;
 }
 
 .body {

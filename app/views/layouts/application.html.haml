@@ -85,16 +85,25 @@
                 %a{:href => "/log_out"} Logout
       .icon-holder
         %a{:href => "#", :class => current_user.nil? ? "icon-drop-down" : "icon-drop-down-nominate" }
-      -##slider
-        .timeline.A
-          .tagline
-            %h3 Slide A
-          .device
-        .timeline.B
-          .tagline
-            %h3 Slide B
-          .device
-        .timeline.C
+      #slider
+        .A
+          .timeline
+            .tagline
+              %h3 Send money Across the world
+            .device
+            %p
+              Stuck in a strange city far far away from home, Remember how stressed you were? Remember how just in the nick of time
+              your mum came through for you, and sent you money via Western Union? Share your story and nominate your Hero. The could win
+              %strong 5000/=
+              daily from Western Union
+        .B
+          .timeline
+            .tagline
+              %h3 Home & Away
+            .device
+            %p
+              The social platform for Kenyans around the globe to share their experiences, connect and make friends.
+        -#.timeline.C
           .tagline
             %h3 Slide C
           .device
