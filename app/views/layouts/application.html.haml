@@ -61,7 +61,7 @@
               .spin-holder#spinner
               %a.next
               %p.progress.hidden Saving...
-        .icon-holder
+        -#.icon-holder
           %a.icon-drop-down{:href => "#"}
       %div{:class => "hide-for-small nominate-your-hero " + (current_user.nil? ? "hidden" : "") }
         %form#add-story-form.add-story{:enctype => "multipart/form-data",
@@ -85,8 +85,21 @@
                   %a.finish{:href => "#"}
               .one.columns
                 %a{:href => "/log_out"} Logout
-        .icon-holder
-          %a.icon-drop-down-nominate{:href => "#"}
+      .icon-holder
+        %a.icon-drop-down-nominate{:href => "#"}
+      -##slider
+        .timeline.A
+          .tagline
+            %h3 Slide A
+          .device
+        .timeline.B
+          .tagline
+            %h3 Slide B
+          .device
+        .timeline.C
+          .tagline
+            %h3 Slide C
+          .device
     = yield
     .row.main.spacer
     .row.main

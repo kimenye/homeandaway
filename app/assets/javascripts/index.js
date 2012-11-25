@@ -1,9 +1,14 @@
 $(document).ready(function() {
     var visible = false;
 
+//    $('#slider').orbit({ fluid: '16x6' });
+
+
     $('.icon-drop-down').click(function() {
-        if (!visible)
+        if (!visible)                        {
             $('.login-or-register').transition({ y: '295px' });
+            $('.icon-holder').transition({ y: '295px' });
+        }
         else
             $('.login-or-register').transition({ y: '0px' });
         visible = !visible;

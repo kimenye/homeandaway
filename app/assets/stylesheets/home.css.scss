@@ -44,9 +44,10 @@
 }
 
 .icon-holder {
-  position: absolute;
-  top: 300px;
-  width: 100%;
+  position: relative;
+  //top: 300px;
+  //width: 100%;
+  //z-index: 20000;
 }
 
 a.icon-drop-down, a.icon-drop-down-nominate {
@@ -64,11 +65,39 @@ a.icon-drop-down:hover, a.icon-drop-down-nominate:hover {
 }
 
 .promo {
-  background-image:radial-gradient(rgba(80,0,0,0.1) 0%, rgba(80,0,0,0.2) 30%, rgba(21,11,1,0.9) 100% );
-  background-image:-webkit-radial-gradient(rgba(80,0,0,0.1) 0%, rgba(80,0,0,0.2) 30%, rgba(21,11,1,0.9) 100% );
-  background-image:-moz-radial-gradient(rgba(80,0,0,0.1) 0%, rgba(80,0,0,0.2) 30%, rgba(21,11,1,0.9) 100% );
+  //background: radial-gradient(rgba(80,0,0,0.1) 0%, rgba(80,0,0,0.2) 30%, rgba(21,11,1,0.9) 100% ), url('/assets/slider-background.jpg') no-repeat center center;
+  //background: -webkit-radial-gradient(rgba(80,0,0,0.1) 0%, rgba(80,0,0,0.2) 30%, rgba(21,11,1,0.9) 100% ), url('/assets/slider-background.jpg') no-repeat center center;
+  //background: -moz-radial-gradient(rgba(80,0,0,0.1) 0%, rgba(80,0,0,0.2) 30%, rgba(21,11,1,0.9) 100% ), url('/assets/slider-background.jpg') no-repeat center center;
+  background: url('/assets/slider-background.jpg') center center no-repeat;
+  background-color: #110d0e;
   height: 300px;
   position: relative;
+}
+
+.timeline {
+  border-top: 3px solid #ffffff;
+  position: relative;
+  //top: 100px;
+}
+
+.device {
+  background-image: url(/assets/timeline-device.png);
+  height: 26px;
+  width: 26px;
+  position: relative;
+  //top: -70px;
+  left: 715px;
+}
+
+.timeline .tagline {
+  position: relative;
+  //top: -55px;
+  left: 750px;
+  padding-top: 0px;
+}
+
+.timeline .tagline h3 {
+  color: #ffde00;
 }
 
 .body {
