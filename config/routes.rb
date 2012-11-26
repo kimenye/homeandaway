@@ -70,8 +70,8 @@ Homeandaway::Application.routes.draw do
   get "sign_up" => "users#new", :as => "sign_up"
   get "verify_login" => "home#logged_in"
 
-  match 'auth/:provider/callback', to: 'sessions#oath_create'
-  match 'auth/failure', to: redirect('/')
+  match 'auth/:provider/callback', :to => 'sessions#oath_create'
+  match 'auth/failure', :to => redirect('/')
   #match 'signout', to: 'sessions#destroy', as: 'signout'
 
   root :to => "users#new"
