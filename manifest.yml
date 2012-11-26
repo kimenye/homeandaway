@@ -1,0 +1,16 @@
+---
+applications:
+  .:
+    name: homeandaway
+    framework:
+      name: rails3
+      info:
+        mem: 256M
+        description: Rails Application
+        exec: 
+    url: homeandaway.cloudfoundry.com
+    mem: 128M
+    instances: 1
+    services:
+      mysql-9917b:
+        type: mysql

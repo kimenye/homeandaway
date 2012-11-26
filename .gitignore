@@ -16,3 +16,4 @@
 .idea
 Procfile
 public/system*
+public/assets*
