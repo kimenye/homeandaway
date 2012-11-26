@@ -17,3 +17,4 @@
 Procfile
 public/system*
 public/assets*
+vendor/cache*

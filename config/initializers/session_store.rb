@@ -1,8 +1,8 @@
 # Be sure to restart your server when you modify this file.
 
-Homeandaway::Application.config.session_store :cookie_store, key: '_homeandaway_session'
+#Homeandaway::Application.config.session_store :cookie_store, key: '_homeandaway_session'
 
 # Use the database for sessions instead of the cookie-based default,
 # which shouldn't be used to store highly confidential information
 # (create the session table with "rails generate session_migration")
-# Homeandaway::Application.config.session_store :active_record_store
+Homeandaway::Application.config.session_store :active_record_store
