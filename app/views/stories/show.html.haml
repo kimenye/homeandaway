@@ -19,8 +19,7 @@
     .three.columns
       %p.summary
         %strong
-          1,250,000
-        Won
+          KES 0 Won
 .container.yellow
   .row.spacer
   .row.main.rounded
@@ -28,7 +27,7 @@
   .row.main
     .eight.columns
       .row
-        .seven.columns
+        .seven.columns.mobile-twelve
           .story-pic
             = render :partial => "shared/pic", :locals => { :story => @story }
           %h4.subheader.story-title
@@ -39,10 +38,10 @@
             = image_tag "/assets/location.jpg"
             %span.subheader
               = @story.user.location
-        .three.columns.border-left
+        .three.columns.border-left.mobile-two
           %h4.subheader.num-votes{"data-num-votes" => @story.votes}
             = "#{@story.votes} Votes"
-        .two.columns.border-left.vote-here
+        .two.columns.border-left.vote-here.mobile-two
           - if current_user and @story.can_vote_for_story?(current_user)
             %a.vote-now.vote-link{:href => "#", "data-id" => @story.nominee.id}
           - else

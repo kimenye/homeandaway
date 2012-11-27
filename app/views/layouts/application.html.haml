@@ -32,7 +32,7 @@
       %a.logo{:href => "/"}
       %span.tagline Share with the world how a Hero came through for you with Western Union Money transfer
       %span.cta-share SHARE YOUR STORY
-    .container.promo
+    .container.promo.hide-for-small
       %div{:class => "hide-for-small login-or-register " + (!current_user.nil? ? "hidden" : "") }
         .row
           .twelve.columns
