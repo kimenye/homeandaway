@@ -30,10 +30,15 @@
       }(document, 'script', 'facebook-jssdk'));
     .header
       %a.logo{:href => "/"}
-      %span.tagline Share with the world how a Hero came through for you with Western Union Money transfer
-      %span.cta-share SHARE YOUR STORY
+      %span.tagline Share with the world how your loved one came through for you with Western Union Money transfer
     .container.promo.hide-for-small
+      .share-icon
+      .timeline
+      .device
       %div{:class => "hide-for-small login-or-register " + (!current_user.nil? ? "hidden" : "") }
+        .row
+          %br
+          %br
         .row
           .twelve.columns
             .three.columns
@@ -64,6 +69,9 @@
         %form#add-story-form.add-story{:enctype => "multipart/form-data",
           :action=> "/users/#{ current_user.nil? ? 0 : current_user.id }/stories", :method => "post"}
           .row
+            %br
+            %br
+          .row
             .twelve.columns
               .three.columns
                 .nominate-your-hero-image
@@ -91,41 +99,17 @@
                     #story-spinner
               .one.columns
                 %a.logout{:href => "/log_out"} Log out
-      .hide-for-small.thank-you.hidden
+        .thank-you.hidden
+          %p
+            Thank you for sharing your story.
+            %br
+            Share it with your friends to
+            %br
+            increase the chances of your
+            %br
+            loved one to win 5000/= daily
       .icon-holder
         %a{:href => "#", :class => current_user.nil? ? "icon-drop-down" : "icon-drop-down-nominate" }
-      #slider
-        .slide-1
-          .timeline
-            .tagline
-              %h3 Send money Across the world
-            .device
-            %p
-              Stuck in a strange city far far away from home, Remember how stressed you were? Remember how just in the nick of time
-              your mum came through for you, and sent you money via Western Union? Share your story and nominate your Hero. The could win
-              %strong 5000/=
-              daily from Western Union
-            .timeline-icon.timeline-icon-a
-            %a.cta{:href => "#"}
-        .slide-2
-          .timeline
-            .tagline
-              %h3 Home & Away
-            .device
-            %p
-              The social platform for Kenyans around the globe to share their experiences, connect and make friends.
-            .timeline-icon.timeline-icon-b
-        .slide-3
-          .timeline
-            .tagline
-              %h3 Send money Across the world
-            .device
-            %p
-              Stuck in a strange city far far away from home, Remember how stressed you were? Remember how just in the nick of time
-              your mum came through for you, and sent you money via Western Union? Share your story and nominate your Hero. The could win
-              %strong 5000/=
-              daily from Western Union
-            .timeline-icon.timeline-icon-c
     = yield
     .row.main.spacer
     .row.main

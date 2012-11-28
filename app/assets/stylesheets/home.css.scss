@@ -20,32 +20,35 @@
   margin: auto;
   height: 52px;
   width: 291px;
+  margin-top: 30px;
 }
 
 .tagline {
-  padding-top: 30px;
+  padding-top: 10px;
   font-weight: 600;
   display: block;
 }
 
-.cta-share {
-  color: #ffdd00;
-  display: block;
-  padding-top: 45px;
-  font-size: 18px;
+.share-icon {
+  background: url(/assets/share-click-here.png) no-repeat;
+  width: 240px;
+  height: 63px;
+  position: absolute;
+  top: 12px;
+  left: 52%;
 }
 
 .login-or-register, .nominate-your-hero {
   background-color: #ffdd00;
-  height: 300px;
+  height: 375px;
   position: relative;
   width: 100%;
-  top: -300px;
+  top: -375px;
 }
 
 .icon-holder {
   position: relative;
-  top: -300px;
+  top: -375px;
   z-index: 6;
 }
 
@@ -64,120 +67,26 @@ a.icon-drop-down:hover, a.icon-drop-down-nominate:hover {
 }
 
 .promo {
-  //background: radial-gradient(rgba(80,0,0,0.1) 0%, rgba(80,0,0,0.2) 30%, rgba(21,11,1,0.9) 100% ), url('/assets/slider-background.jpg') no-repeat center center;
-  //background: -webkit-radial-gradient(rgba(80,0,0,0.1) 0%, rgba(80,0,0,0.2) 30%, rgba(21,11,1,0.9) 100% ), url('/assets/slider-background.jpg') no-repeat center center;
-  //background: -moz-radial-gradient(rgba(80,0,0,0.1) 0%, rgba(80,0,0,0.2) 30%, rgba(21,11,1,0.9) 100% ), url('/assets/slider-background.jpg') no-repeat center center;
-  background: url('/assets/slider-background.jpg') center center no-repeat;
+  background: url('/assets/timeline.jpg') center center no-repeat;
   background-color: #110d0e;
-  height: 300px;
-  position: relative;
-}
-
-.orbit-wrapper {
-  top: -300px;
+  height: 375px;
   position: relative;
 }
 
 .timeline {
-  border-top: 3px solid #ffffff;
-  position: relative;
-  top: 30px;
+  border-top: 4px solid #ffffff;
+  position: absolute;
+  width: 100%;
+  top: 90px;
 }
 
 .device {
   background-image: url(/assets/timeline-device.png);
   height: 26px;
   width: 26px;
-  position: relative;
-  top: -70px;
-  //left: 715px;
-  left: 53%;
-}
-
-.timeline .tagline {
-  position: relative;
-  top: -50px;
-  //left: 750px;
-  left: 55%;
-  padding-top: 0px;
-}
-
-.timeline .tagline h3, .timeline strong {
-  color: #ffde00;
-}
-
-.timeline p {
-  color: #ffffff;
-  display: block;
-  width: 380px;
-  position: relative;
-  //left: 750px;
-  left: 55%;
-  top: -60px;
-  text-align: justify;
-}
-
-.timeline .cta {
-  width: 175px;
-  height: 38px;
-  background-image: url(/assets/share-your-story.png);
-  display: block;
-  position: relative;
-  left: 55%;
-  top: -50px;
-}
-
-.timeline-icon {
-  background: url(/assets/timeline-icons.png) no-repeat;
-  width: 356px;
-  height: 267px;
   position: absolute;
-  top: -34px;
-  left: 18%;
-}
-
-
-.timeline-icon-a {
-  background-position: 0 -534px;
-}
-
-
-.timeline-icon-b {
-  background-position: 0 -267px;
-}
-
-
-.timeline-icon-c {
-  background-position: 0 0;
-}
-
-div.orbit-wrapper div.slider-nav span {
-  width: 101px;
-  height: 79px;
-}
-
-div.orbit-wrapper div.slider-nav span.right-1 {
-  background: url('/assets/right-b.png') no-repeat;
-}
-
-div.orbit-wrapper div.slider-nav span.left-1 {
-  background: url('/assets/left-b.png') no-repeat;
-}
-
-div.orbit-wrapper div.slider-nav span.right-2 {
-  background: url('/assets/right-a.png') no-repeat;
-}
-
-div.orbit-wrapper div.slider-nav span.left-2 {
-  background: url('/assets/left-a.png') no-repeat;
-}
-
-div.orbit-wrapper div.slider-nav span.right-0 {
-  background: url('/assets/right-c.png') no-repeat;
-}
-
-div.orbit-wrapper div.slider-nav span.left-0 {
-  background: url('/assets/left-c.png') no-repeat;
+  top: 79px;
+  left: 45%;
 }
 
 .body {
@@ -289,6 +198,23 @@ p.summary {
 
 .hidden {
   display: none !important;
+}
+
+.thank-you {
+  background: url(/assets/thank-you.png) center center no-repeat;
+  width: 100%;
+  height: 225px;
+  margin-top: 50px;
+  //position: absolute;
+}
+
+.thank-you p {
+  display: block;
+  width: 300px;
+  position: absolute;
+  left: 56%;
+  top: 150px;
+  //margin-top: 200px;
 }
 
 .share-your-story, .nominate-your-hero {
@@ -488,10 +414,6 @@ a.navigation:hover {
     position: absolute;
     left: -5px;
     top: 5px;
-  }
-
-  .cta-share {
-    padding-top: 30px;
   }
 
   .border-left {
