@@ -1,6 +1,9 @@
 class StoriesController < ApplicationController
 
   def index
+    @num_stories = Story.count
+    @num_nominees = Nominee.count
+    @num_votes = Vote.count
     @stories = Story.page(params[:page]).order('created_at DESC')
   end
 
