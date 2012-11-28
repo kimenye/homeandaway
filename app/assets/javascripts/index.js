@@ -50,6 +50,11 @@ $(document).ready(function() {
         visible = !visible;
     });
 
+    $('.accept').click(function() {
+        $('#terms-and-conditions-modal').trigger('reveal:close');
+        $('#terms-and-conditions').attr('checked', 'true');
+    });
+
     $('.timeline .cta').click(function() {
         revealDropDown();
     });
@@ -150,6 +155,16 @@ $(document).ready(function() {
             if (hasNominee && hasMtcn) {
                 $('#mtcn').removeClass('error');
                 $('#nominee').removeClass('error');
+
+                //check if terms and conditions has been setup
+                var tacChecked = $('#terms-and-conditions').is(':checked');
+
+                if (!tacChecked) {
+                    hasError = true;
+                }
+                else {
+
+                }
             }
             else
             {

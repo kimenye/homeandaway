@@ -80,6 +80,10 @@
                   %p Nominate your Hero
                   %input#nominee{:type => "text", :placeholder => "Your Nominee's name", :name => "nominee[full_name]"}
                   %input#mtcn{:type => "text", :placeholder => "Money transfer control number", :name=> "nominee[mtcn]"}
+                  %input#terms-and-conditions{:type=> "checkbox"}
+                    I accept the
+                    %a.tac{'data-reveal-id' => 'terms-and-conditions-modal'}
+                      terms and conditions
                   %a.finish{:href => "#"}
               .one.columns
                 %a{:href => "/log_out"} Logout
@@ -122,3 +126,4 @@
     .row.main
       .two.columns.offset-by-ten
         = image_tag "/assets/western-union-logo.jpg"
+  = render :partial => "shared/terms_and_conditions"

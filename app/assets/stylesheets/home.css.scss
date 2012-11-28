@@ -9,7 +9,7 @@
   color: #ffffff;
   text-align: center;
   position: relative;
-  z-index: 10000;
+  z-index: 5;
   padding-top: 10px;
 }
 
@@ -46,7 +46,7 @@
 .icon-holder {
   position: relative;
   top: -300px;
-  z-index: 20000;
+  z-index: 6;
 }
 
 a.icon-drop-down, a.icon-drop-down-nominate {
@@ -420,6 +420,45 @@ a.icon-thank-you:hover {
 .example .row .column, .example .row .columns {
   background:#eee;
   border: 1px solid #ddd;
+}
+
+.terms {
+  height: 300px;
+  display: block;
+  overflow-y: scroll;
+  overflow-x: visible;
+  background-color: #d3d3d3;
+}
+
+.accept {
+  margin-top: 10px;
+  background-color: #0072c7;
+}
+
+#slider {
+  height: 280px !important;
+}
+
+a.tac {
+  color: #0072c7;
+}
+
+a.tac:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+a.navigation {
+  text-decoration: none;
+  color: inherit;
+  width: 158px;
+  height: 40px;
+  display: block;
+}
+
+a.navigation:hover {
+  cursor: pointer;
+  background: url('/assets/yellow-indicator.jpg') no-repeat center bottom;
 }
 
 @media only screen and (max-width: 767px) {
