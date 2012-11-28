@@ -53,6 +53,11 @@
           %p
             = @story.body
       .row
+        .twelve.columns
+          .addthis_toolbox.addthis_default_style{"addthis:url" => "#{request.protocol}#{request.host_with_port}#{request.fullpath}"}
+            %a.addthis_button_facebook_like{"fb:like:layout" => "button_count"}
+            %a.addthis_button_tweet
+      .row
         %p
         .twelve.columns.reviews
           .fb-comments{"data-href" => "#{request.protocol}#{request.host_with_port}#{request.fullpath}", "data-num-posts" => "5" }
