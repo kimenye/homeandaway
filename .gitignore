@@ -17,4 +17,5 @@
 Procfile
 public/system*
 public/assets*
+*.DS_Store
 vendor/cache*
