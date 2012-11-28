@@ -50,9 +50,20 @@ $(document).ready(function() {
         visible = !visible;
     });
 
+//    if(true) {
+//        dropDown($('.nominate-your-hero'));
+//        visible = true;
+//    }
+
     $('.accept').click(function() {
         $('#terms-and-conditions-modal').trigger('reveal:close');
         $('#terms-and-conditions').attr('checked', 'true');
+    });
+
+    $('#terms-and-conditions').change(function() {
+        if ($(this).is(':checked')) {
+           $('.tac-error').addClass('hidden');
+        }
     });
 
     $('.timeline .cta').click(function() {
@@ -121,7 +132,14 @@ $(document).ready(function() {
 
     $('.file.upload-picture').css('display', 'none');
 
+    var postRunning = false;
     $('.finish').click(function() {
+        if(postRunning) {
+            return;
+        }
+        postRunning = true;
+        $('.finish').addClass('waiting');
+
         var hasError = false;
         var hasNominee = false;
         var hasMtcn = false;
@@ -131,14 +149,12 @@ $(document).ready(function() {
         var nomineeName = $('#nominee').val();
         var mtcn = $('#mtcn').val();
 
-
         if (title == "" || title.length == 0) {
             $('#story-title').addClass('error');
             hasError = true;
         }
         else
             $('#story-title').removeClass('error');
-
 
         if (body == "" || body.length == 0) {
             $('#story-body').addClass('error');
@@ -147,23 +163,19 @@ $(document).ready(function() {
         else
             $('#story-body').removeClass('error');
 
-        hasNominee = nomineeName == "" || nomineeName.length == 0;
-        hasMtcn = mtcn == "" || mtcn.length == 0;
-
+        hasNominee = nomineeName != "" && nomineeName.length > 0;
+        hasMtcn = mtcn != "" || mtcn.length > 0;
         if (hasNominee || hasMtcn) {
             //then should have both
             if (hasNominee && hasMtcn) {
                 $('#mtcn').removeClass('error');
                 $('#nominee').removeClass('error');
-
                 //check if terms and conditions has been setup
                 var tacChecked = $('#terms-and-conditions').is(':checked');
 
                 if (!tacChecked) {
                     hasError = true;
-                }
-                else {
-
+                    $('.tac-error').removeClass('hidden');
                 }
             }
             else
@@ -172,19 +184,30 @@ $(document).ready(function() {
                     $('#nominee').addClass('error');
                 if (!hasMtcn)
                     $('#mtcn').addClass('error');
+                hasError = true;
             }
         }
 
-        if (hasError)
+        if (hasError) {
+            postRunning = false;
+            $('.finish').removeClass('waiting');
             return;
+        }
         else {
-            $('#add-story-form').ajaxForm(function() {
-                $('.add-story').transition({
-                    opacity: 0
-                }, function() {
-                    $('.add-story').addClass('hidden');
-                });
-            });
+            var s = showSpinner('story-spinner');
+            var options = {
+                clearForm: true,
+                success: function() {
+                    postRunning = false;
+                    $('.finish').removeClass('waiting');
+                    $('.add-story').transition({
+                        opacity: 0
+                    }, function() {
+                        $('.add-story').addClass('hidden');
+                    });
+                }
+            }
+            $('#add-story-form').ajaxForm(options);
             $('#add-story-form').submit();
         }
     });
@@ -287,7 +310,8 @@ $(document).ready(function() {
                     $('.next').removeClass('waiting');
                     s.stop();
                     registerRunning = false;
-                }
+                },
+                clearForm: true
             }
 
             $('#registration-form').ajaxForm(options);

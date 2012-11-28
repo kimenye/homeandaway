@@ -457,12 +457,22 @@ a.tac:hover {
   cursor: pointer;
 }
 
+p.tac-error {
+  color: #ff0000;
+  margin-bottom: 10px;
+}
+
 a.navigation {
   text-decoration: none;
   color: inherit;
   width: 158px;
   height: 40px;
   display: block;
+}
+
+.story-spinner-holder {
+  margin-top: -20px;
+  margin-left: 35px;
 }
 
 a.navigation:hover {
