@@ -189,7 +189,15 @@ $(document).ready(function() {
         }
     });
 
+    var registerRunning = false;
     $('.next').click(function() {
+        if (registerRunning) {
+            return;
+        }
+        registerRunning = true;
+        $('.next').addClass('waiting');
+
+
         var hasError = false;
         var hasConfirmedPassword = false;
         var email = $('#email').val();
@@ -254,25 +262,35 @@ $(document).ready(function() {
                 $('#password-confirm').removeClass('error');
         }
 
-        if (hasError)
+        if (hasError) {
+            registerRunning = false;
             return;
+        }
         else {
             var s = showSpinner('spinner');
-            $('.progress').toggleClass('hidden');
-
             var url = "/users";
             var location = city + ", " + country;
-
             $('#location').val(city + ", " + country);
-            $('#registration-form').ajaxForm(function() {
-                $.get('/verify_login', function(data) {
-                    var id = data.id;
+            var options = {
+                success: function() {
+                    $.get('/verify_login', function(data) {
+                        registerRunning = false;
+                        var id = data.id;
+                        s.stop();
+                        $('#add-story-form').attr('action', "/users/" + id + "/stories");
+                        hideLogin();
+                    });
+                },
+                error: function(response) {
+                    //most probably an issue with the email address
+                    $('#email').addClass('error');
+                    $('.next').removeClass('waiting');
                     s.stop();
-                    $('.progress').toggleClass('hidden');
-                    $('#add-story-form').attr('action', "/users/" + id + "/stories");
-                    hideLogin();
-                });
-            });
+                    registerRunning = false;
+                }
+            }
+
+            $('#registration-form').ajaxForm(options);
             $('#registration-form').submit();
         }
     });

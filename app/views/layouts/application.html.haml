@@ -60,7 +60,6 @@
             .one.columns
               .spin-holder#spinner
               %a.next
-              %p.progress.hidden Saving...
       %div{:class => "hide-for-small nominate-your-hero " + (current_user.nil? ? "hidden" : "") }
         %form#add-story-form.add-story{:enctype => "multipart/form-data",
           :action=> "/users/#{ current_user.nil? ? 0 : current_user.id }/stories", :method => "post"}
@@ -81,12 +80,14 @@
                   %input#nominee{:type => "text", :placeholder => "Your Nominee's name", :name => "nominee[full_name]"}
                   %input#mtcn{:type => "text", :placeholder => "Money transfer control number", :name=> "nominee[mtcn]"}
                   %input#terms-and-conditions{:type=> "checkbox"}
-                    I accept the
-                    %a.tac{'data-reveal-id' => 'terms-and-conditions-modal'}
-                      terms and conditions
+                    %span
+                      I accept the
+                      %a.tac{'data-reveal-id' => 'terms-and-conditions-modal'}
+                        terms and conditions
                   %a.finish{:href => "#"}
               .one.columns
-                %a{:href => "/log_out"} Logout
+                %a.logout{:href => "/log_out"} Log out
+      .hide-for-small.thank-you.hidden
       .icon-holder
         %a{:href => "#", :class => current_user.nil? ? "icon-drop-down" : "icon-drop-down-nominate" }
       #slider

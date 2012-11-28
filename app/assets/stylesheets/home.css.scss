@@ -332,6 +332,10 @@ a.next:hover {
   cursor: pointer;
 }
 
+a.waiting:hover {
+  cursor: wait;
+}
+
 .spin-holder {
   margin-top: 65px;
   margin-left: 10px;
@@ -366,6 +370,11 @@ input.error {
 
 .nominate-your-hero p {
   padding-top: 10px;
+}
+
+.logout {
+  margin-top: 10px;
+  display: block;
 }
 
 .border-left {
@@ -439,7 +448,7 @@ a.icon-thank-you:hover {
   height: 280px !important;
 }
 
-a.tac {
+a.tac, a.logout {
   color: #0072c7;
 }
 
