@@ -16,6 +16,6 @@
 .idea
 Procfile
 public/system*
-public/assets*
+#public/assets*
 *.DS_Store
 vendor/cache*
