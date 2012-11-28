@@ -18,6 +18,7 @@ gem 'haml-rails'
 gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'omniauth-facebook'
 gem 'paperclip'
+gem 'aws-sdk'
 
 
 # Gems used only for assets and not required
