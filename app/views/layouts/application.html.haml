@@ -120,4 +120,7 @@
       .two.columns
         = image_tag "/assets/western-union-logo.jpg"
   = render :partial => "shared/terms_and_conditions"
-  = javascript_include_tag "//s7.addthis.com/js/300/addthis_widget.js#pubid=xa-50b5e19b7d896f49"
+  -#= javascript_include_tag "//s7.addthis.com/js/300/addthis_widget.js#pubid=xa-50b5e19b7d896f49"
+  = javascript_include_tag "http://w.sharethis.com/button/buttons.js"
+  :javascript
+    stLight.options({publisher: "ur-cec8ce49-8770-140f-ec20-33bd69e5482a"});

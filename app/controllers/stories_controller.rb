@@ -28,7 +28,8 @@ class StoriesController < ApplicationController
     @user = User.find(params[:user_id])
     @story = @user.stories.create(params[:story])
 
-    if params[:nominee]
+    puts "#{params}"
+    if params[:nominee] and params[:nominee][:full_name] != "" and params[:nominee][:mtcn] != ""
     #  nominate a user
       @nominee = @story.nominees.create(params[:nominee])
     end

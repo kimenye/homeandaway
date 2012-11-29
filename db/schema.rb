@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121126070235) do
+ActiveRecord::Schema.define(:version => 20121129112103) do
 
   create_table "nominees", :force => true do |t|
     t.integer  "story_id"
@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(:version => 20121126070235) do
     t.datetime "avatar_updated_at"
     t.string   "name"
     t.string   "location"
+    t.boolean  "admin"
   end
 
   create_table "votes", :force => true do |t|

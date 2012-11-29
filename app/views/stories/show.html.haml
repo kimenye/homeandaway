@@ -1,26 +1,4 @@
-.container.body
-  .row.summary
-    .three.columns
-      %p.summary
-        %a.navigation{:href => "/"}
-          %span
-            %strong
-              = "#{@num_stories}"
-            Stories shared
-    .three.columns
-      %p.summary
-        %strong
-          = "#{@num_nominees}"
-        Nominees
-    .three.columns
-      %p.summary
-        %strong.summary-num-votes{"data-num-votes" => @num_votes}
-          = "#{@num_votes}"
-        Votes Cast
-    .three.columns
-      %p.summary
-        %strong
-          KES 0 Won
+= render :partial => "shared/nav"
 .container.yellow
   .row.spacer
   .row.main.rounded
@@ -54,6 +32,11 @@
           %p
             = @story.body
       .row
+        .twelve.columns
+          .share
+            %span.st_facebook_vcount{:displayText => "Facebook"}
+            %span.st_twitter_vcount{:displayText => "Tweet"}
+      -#.row
         .twelve.columns
           .addthis_toolbox.addthis_default_style{"addthis:url" => "#{request.protocol}#{request.host_with_port}#{request.fullpath}"}
             %a.addthis_button_facebook_like{"fb:like:layout" => "button_count"}

@@ -3,6 +3,9 @@ class Nominee < ActiveRecord::Base
   has_many :votes
   attr_accessible :full_name, :mtcn
 
+  validates_presence_of :full_name
+  validates_presence_of :mtcn
+
   self.per_page = 10
 
   def can_be_voted_for_by?(user)
