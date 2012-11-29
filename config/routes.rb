@@ -5,6 +5,8 @@ Homeandaway::Application.routes.draw do
 
   get "home/index"
 
+  get "home/rates"
+
   get "stories/index"
 
   get "nominees/index"

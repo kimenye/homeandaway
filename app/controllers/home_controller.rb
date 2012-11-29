@@ -6,6 +6,12 @@ class HomeController < ApplicationController
     @num_votes = Vote.count
   end
 
+  def rates
+    @num_stories = Story.count
+    @num_nominees = Nominee.count
+    @num_votes = Vote.count
+  end
+
   respond_to :json
 
   def logged_in
