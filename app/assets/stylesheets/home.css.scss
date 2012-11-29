@@ -470,13 +470,8 @@ a.navigation:hover {
 }
 
 @media only screen and (max-width: 767px) {
-  .indicator {
-    background-image: url('/assets/yellow-indicator-vertical.jpg');
-    width: 15px;
-    height: 30px;
-    position: absolute;
-    left: -5px;
-    top: 5px;
+  a.navigation:hover {
+    background: none;
   }
 
   .border-left {
