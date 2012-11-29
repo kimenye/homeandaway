@@ -1,26 +1,4 @@
-.container.body
-  .row.summary
-    .three.columns
-      %p.summary
-        %a.navigation{:href => "/"}
-          %span
-            %strong
-              = "#{@num_stories}"
-            Stories shared
-    .three.columns
-      %p.summary
-        %strong
-          = "#{@num_nominees}"
-        Nominees
-    .three.columns
-      %p.summary
-        %strong.summary-num-votes{"data-num-votes" => @num_votes}
-          = "#{@num_votes}"
-        Votes Cast
-    .three.columns
-      %p.summary
-        %strong
-          KES 0 Won
+= render :partial => "shared/nav"
 .container.yellow
   .row.spacer
   .row.main.rounded

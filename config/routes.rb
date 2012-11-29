@@ -7,6 +7,8 @@ Homeandaway::Application.routes.draw do
 
   get "stories/index"
 
+  get "nominees/index"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

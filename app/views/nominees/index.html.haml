@@ -1,0 +1,29 @@
+= render :partial => "shared/nav"
+.container.yellow
+  .row.spacer
+  .row.main.rounded
+    %br
+  .row.main
+    .twelve.columns
+      %h4.subheader Home and Away Nominees
+  .row.main
+    = will_paginate @nominees, :page_links => false, :previous_label => "", :next_label => "", :container => false
+    .twelve.columns
+      %table.twelve
+        %thead
+          %tr
+            %th
+              Name of Nominee
+            %th
+              Nominated By
+        %tbody
+          -if @nominees and !@nominees.empty?
+            - @nominees.each do |nominee|
+              %tr
+                %td
+                  = nominee.full_name
+                %td
+                  = nominee.story.user.name
+          -else
+            %tr
+              %td{:colspan=> "2"} No Loved ones have been nominated yet
