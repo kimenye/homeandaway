@@ -447,7 +447,8 @@ a.navigation:hover {
 }
 
 .sidebar {
-  background: url(/assets/sidebar-bg.png) no-repeat center center;
+  background: url(/assets/sidebar-img.png) no-repeat center top;
+  background-color: #e1e1e1;
   min-height: 730px;
 }
 
@@ -476,5 +477,9 @@ a.navigation:hover {
 
   .border-left {
     border-left: none;
+  }
+
+  .sign-in {
+    margin-top: 10px;
   }
 }

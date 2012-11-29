@@ -32,6 +32,10 @@
     .header
       %a.logo{:href => "/"}
       %span.tagline Share with the world how your loved one came through for you with Western Union Money transfer
+    -if current_user.nil?
+      .show-for-small.mobile-register
+        .sign-in-with-facebook
+          = link_to "", "/auth/facebook", :class => "sign-in"
     .container.promo.hide-for-small
       .share-icon
       .timeline
