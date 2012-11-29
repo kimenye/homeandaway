@@ -12,3 +12,7 @@
           - @stories.each do |msg|
             %li
               = render :partial => "shared/story", :locals => { :msg => msg }
+
+  - if current_user
+    .show-for-small.four.columns
+      = render :partial => "shared/sidebar_share_story"
