@@ -70,4 +70,6 @@
                 %li
                   = render :partial => "shared/story", :locals => { :msg => msg }
     .four.columns
-      = image_tag "/assets/sidebar-share.png"
+      -#= image_tag "/assets/sidebar-bg.png"
+      - if current_user
+        = render :partial => "shared/sidebar_share_story"

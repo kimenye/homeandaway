@@ -23,9 +23,12 @@ $(document).ready(function() {
         $('#terms-and-conditions').attr('checked', 'true');
     });
 
-    $('#terms-and-conditions').change(function() {
+    $('.terms-and-conditions').change(function() {
         if ($(this).is(':checked')) {
-           $('.tac-error').addClass('hidden');
+            if ($(this).hasClass('b'))
+                $('.tac-error.b').addClass('hidden');
+            else
+                $('.tac-error').addClass('hidden');
         }
     });
 
@@ -87,79 +90,89 @@ $(document).ready(function() {
         if(postRunning) {
             return;
         }
+
+        var isSidebar = $(this).hasClass('b');
+        var cls = isSidebar ? 'b' : 'a';
         postRunning = true;
-        $('.finish').addClass('waiting');
+        $(".finish." + cls).addClass('waiting');
 
         var hasError = false;
         var hasNominee = false;
         var hasMtcn = false;
-        var title = $('#story-title').val();
-        var body = $('#story-body').val();
+        var title = $(".story-title." + cls).val();
+        var body = $('.story-body.' + cls).val();
 
-        var nomineeName = $('#nominee').val();
-        var mtcn = $('#mtcn').val();
+        var nomineeName = $('.nominee.' + cls).val();
+        var mtcn = $('.mtcn.' + cls).val();
 
         if (title == "" || title.length == 0) {
-            $('#story-title').addClass('error');
+            $('.story-title.' + cls).addClass('error');
             hasError = true;
         }
         else
-            $('#story-title').removeClass('error');
+            $('.story-title.' + cls).removeClass('error');
 
         if (body == "" || body.length == 0) {
-            $('#story-body').addClass('error');
+            $('.story-body.' + cls).addClass('error');
             hasError = true;
         }
         else
-            $('#story-body').removeClass('error');
+            $('.story-body.' + cls).removeClass('error');
 
         hasNominee = nomineeName != "" && nomineeName.length > 0;
         hasMtcn = mtcn != "" || mtcn.length > 0;
         if (hasNominee || hasMtcn) {
             //then should have both
             if (hasNominee && hasMtcn) {
-                $('#mtcn').removeClass('error');
-                $('#nominee').removeClass('error');
+                $('.mtcn.' + cls).removeClass('error');
+                $('.nominee.' + cls).removeClass('error');
                 //check if terms and conditions has been setup
-                var tacChecked = $('#terms-and-conditions').is(':checked');
+                var tacChecked = $('.terms-and-conditions.' + cls).is(':checked');
 
                 if (!tacChecked) {
                     hasError = true;
-                    $('.tac-error').removeClass('hidden');
+                    $('.tac-error.' + cls).removeClass('hidden');
                 }
             }
             else
             {
                 if (!hasNominee)
-                    $('#nominee').addClass('error');
+                    $('.nominee.' + cls).addClass('error');
                 if (!hasMtcn)
-                    $('#mtcn').addClass('error');
+                    $('.mtcn.' + cls).addClass('error');
                 hasError = true;
             }
         }
 
         if (hasError) {
             postRunning = false;
-            $('.finish').removeClass('waiting');
+            $('.finish.' + cls).removeClass('waiting');
+            $('.story-title.' + cls).focus();
             return;
         }
         else {
-            var s = showSpinner('story-spinner');
+            var spinnerId = isSidebar ? 'story-spinner-b' : 'story-spinner-a';
+            var s = showSpinner(spinnerId);
             var options = {
                 clearForm: true,
                 success: function() {
                     postRunning = false;
-                    $('.finish').removeClass('waiting');
-                    $('.add-story').transition({
+                    s.stop();
+
+                    var toHide = isSidebar ? '.sidebar' : '.add-story';
+
+                    $('.finish.' + cls).removeClass('waiting');
+                    $(toHide).transition({
                         opacity: 0
                     }, function() {
-                        $('.add-story').addClass('hidden');
-                        $('.thank-you').removeClass('hidden');
+                        $(toHide).addClass('hidden');
+                        $('.thank-you.' + cls).removeClass('hidden');
                     });
                 }
             }
-            $('#add-story-form').ajaxForm(options);
-            $('#add-story-form').submit();
+            var storyForm = isSidebar ? '#sidebar-add-story' : '#add-story-form';
+            $(storyForm).ajaxForm(options);
+            $(storyForm).submit();
         }
     });
 
@@ -241,7 +254,7 @@ $(document).ready(function() {
             return;
         }
         else {
-            var s = showSpinner('spinner');
+            var s = showSpinner('spinner-a');
             var url = "/users";
             var location = city + ", " + country;
             $('#location').val(city + ", " + country);

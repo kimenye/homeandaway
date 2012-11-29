@@ -1,0 +1,29 @@
+.sidebar
+  %form.sidebar-add-story#sidebar-add-story{:enctype => "multipart/form-data",:action=> "/users/#{current_user.id}/stories", :method => "post"}
+    %p Add your Story
+    %input#sidebar-story-title.radius.story-title.b{:type => "text", :placeholder => "Give your story a title", :name => "story[title]" }
+    %textarea#sidebar-story-body.story-body.b{:placeholder => "Add your story here...", :rows => "7", :name => "story[body]"}
+    %input.upload-picture{:type => "file", :name => "story[picture]"}
+    .nominate
+      %p Nominate your Loved one
+      %input#nominee.nominee.b{:type => "text", :placeholder => "Your Nominee's name", :name => "nominee[full_name]"}
+      %input#mtcn.mtcn.b{:type => "text", :placeholder => "Money transfer control number", :name=> "nominee[mtcn]"}
+      %input#terms-and-conditions.terms-and-conditions.b{:type=> "checkbox"}
+        %span
+          I accept the
+          %a.tac{'data-reveal-id' => 'terms-and-conditions-modal'}
+            terms and conditions
+      %p.tac-error.b.hidden
+        You must accept the terms and conditions to nominate
+      %a.finish.b{:href => "#"}
+      .story-spinner-holder.b
+        #story-spinner-b.story-spinner.b
+.thank-you.b.hidden
+  %p
+    Thank you for sharing your story.
+    %br
+    Share it with your friends to
+    %br
+    increase the chances of your
+    %br
+    loved one to win 5000/= daily

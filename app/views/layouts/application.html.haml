@@ -63,7 +63,7 @@
                   %input#location{:type => "hidden", :name => "user[location]"}
                   %input#profile-picture.upload-picture{:type => "file", :name=> "user[avatar]"}
             .one.columns
-              .spin-holder#spinner
+              .spin-holder#spinner-a
               %a.next
       %div{:class => "hide-for-small nominate-your-hero " + (current_user.nil? ? "hidden" : "") }
         %form#add-story-form.add-story{:enctype => "multipart/form-data",
@@ -79,27 +79,27 @@
               .four.columns.offset-by-one
                 .add-your-story
                   %p Add your Story
-                  %input#story-title{:type => "text", :placeholder => "Give your story a title", :name => "story[title]" }
-                  %textarea#story-body{:placeholder => "Add your story here...", :rows => "5", :name => "story[body]"}
+                  %input#story-title.story-title.a{:type => "text", :placeholder => "Give your story a title", :name => "story[title]" }
+                  %textarea#story-body.story-body.a{:placeholder => "Add your story here...", :rows => "5", :name => "story[body]"}
                   %input.upload-picture{:type => "file", :name => "story[picture]"}
               .three.columns
                 .nominate
                   %p Nominate your Loved one
-                  %input#nominee{:type => "text", :placeholder => "Your Nominee's name", :name => "nominee[full_name]"}
-                  %input#mtcn{:type => "text", :placeholder => "Money transfer control number", :name=> "nominee[mtcn]"}
-                  %input#terms-and-conditions{:type=> "checkbox"}
+                  %input#nominee.nominee.a{:type => "text", :placeholder => "Your Nominee's name", :name => "nominee[full_name]"}
+                  %input#mtcn.mtcn.a{:type => "text", :placeholder => "Money transfer control number", :name=> "nominee[mtcn]"}
+                  %input#terms-and-conditions.terms-and-conditions.a{:type=> "checkbox"}
                     %span
                       I accept the
                       %a.tac{'data-reveal-id' => 'terms-and-conditions-modal'}
                         terms and conditions
-                  %p.tac-error.hidden
+                  %p.tac-error.a.hidden
                     You must accept the terms and conditions to nominate
-                  %a.finish{:href => "#"}
+                  %a.finish.a{:href => "#"}
                   .story-spinner-holder
-                    #story-spinner
+                    #story-spinner-a.story-spinner.a
               .one.columns
                 %a.logout{:href => "/log_out"} Log out
-        .thank-you.hidden
+        .thank-you.a.hidden
           %p
             Thank you for sharing your story.
             %br
