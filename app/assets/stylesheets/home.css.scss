@@ -94,7 +94,7 @@ a.icon-drop-down:hover, a.icon-drop-down-nominate:hover {
   font-family: 'Lato', sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6, table {
+h1, h2, h3, h4, h5, h6, table, p {
   font-family: 'Lato', sans-serif;
 }
 
@@ -102,6 +102,7 @@ p.summary {
   color: #707070;
   font-size: 20px;
   margin-bottom: 0px;
+  padding-top: 5px;
 }
 
 .yellow {
@@ -151,6 +152,15 @@ p.summary {
   background: url('/assets/votes.png') no-repeat;
   padding-left: 30px;
   font-size: 20px;
+}
+
+h4.num-votes {
+  margin-bottom: 10px;
+  margin-top: 10px !important;
+}
+
+h4.subtitle {
+  padding-top: 5px;
 }
 
 .short-votes {
@@ -330,6 +340,7 @@ input.error {
   width: 78px;
   height: 28px;
   display: block;
+  margin-top: 8px;
 }
 
 .icon-thank-you {
@@ -411,6 +422,14 @@ a.navigation {
   width: 158px;
   height: 40px;
   display: block;
+}
+
+a.small {
+  width: 80px;
+}
+
+a.large {
+  width: 180px;
 }
 
 .story-spinner-holder {

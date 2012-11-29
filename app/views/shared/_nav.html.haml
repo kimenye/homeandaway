@@ -16,10 +16,13 @@
             Nominees
     .three.columns
       %p.summary
-        %strong.summary-num-votes{"data-num-votes" => @num_votes}
-          = "#{@num_votes}"
-        Votes Cast
+        %a.navigation.large{:href => "/stories/index"}
+          %span
+            %strong
+              = "#{@num_nominees}"
+            Winning Stories
     .three.columns
       %p.summary
-        %strong
-          KES 0 Won
+        %a.navigation.small{:href => "/home/rates"}
+          %span
+            Rates

@@ -1,32 +1,9 @@
-.container.body
-  .row.summary
-    .three.columns
-      %p.summary
-        %span
-          %strong
-            = "#{@num_stories}"
-          Stories shared
-      .indicator
-    .three.columns
-      %p.summary
-        %strong
-          = "#{@num_nominees}"
-        Nominees
-    .three.columns
-      %p.summary
-        %strong
-          = "#{@num_votes}"
-        Votes Cast
-    .three.columns
-      %p.summary
-        %strong
-          KES. 0
-        Won
+= render :partial => "shared/nav"
 .container.yellow
   .row.spacer
   .row.main.rounded
     .twelve.columns
-      %h4.subheader Most Recent Stories
+      %h4.subheader.subtitle Most Recent Stories
   .row.main
     = will_paginate @stories, :page_links => false, :previous_label => "", :next_label => "", :container => false, :params => { :controller => "stories", :action => "index" }
     .twelve.columns

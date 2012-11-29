@@ -28,7 +28,7 @@
   .row.main
     .eight.columns
       .row
-        .seven.columns.mobile-twelve
+        .six.columns.mobile-twelve
           .story-pic
             = render :partial => "shared/pic", :locals => { :story => @story }
           %h4.subheader.story-title
@@ -47,6 +47,7 @@
             %a.vote-now.vote-link{:href => "#", "data-id" => @story.nominee.id}
           - else
             %a.vote-now.icon-thank-you
+        .one.columns
       .row
         %p
         .twelve.columns
