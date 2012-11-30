@@ -1,0 +1,16 @@
+= render :partial => "shared/nav"
+.container.yellow
+  .row.spacer
+  .row.main.rounded
+    .twelve.columns
+      %h4.subheader.subtitle Most Recent Stories
+  .row.main
+    .twelve.columns
+      - if @stories and !@stories.empty?
+        %ul.block-grid.three-up.mobile-one-up
+          - @stories.each do |msg|
+            %li
+              = render :partial => "shared/story", :locals => { :msg => msg }
+      - else
+        %h4.subheader
+          There are no winning stories yet

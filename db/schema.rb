@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121129112103) do
+ActiveRecord::Schema.define(:version => 20121130104439) do
 
   create_table "nominees", :force => true do |t|
     t.integer  "story_id"
@@ -38,12 +38,14 @@ ActiveRecord::Schema.define(:version => 20121129112103) do
     t.string   "title"
     t.text     "body"
     t.string   "status"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
     t.string   "picture_file_name"
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
+    t.boolean  "has_won",              :default => false
+    t.datetime "date_won"
   end
 
   add_index "stories", ["user_id"], :name => "index_stories_on_user_id"

@@ -1,0 +1,33 @@
+!!!
+/ paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/
+/[if lt IE 7 ] <html class="ie6" lang="en">
+/[if IE 7 ] <html class="ie7" lang="en">
+/[if IE 8 ] <html class="ie8" lang="en">
+/ [if (gte IE 9)|!(IE)]><!
+%html{:lang => "en"}
+  / <![endif]
+  %head
+    %meta{:charset => "utf-8"}/
+    / Uncomment to make IE8 render like IE7
+    / <meta http-equiv="X-UA-Compatible" content="IE=7" />
+    / Set the viewport width to device width for mobile
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    %title= content_for?(:title) ? yield(:title) : "Home & Away"
+    / Included CSS Files
+    = stylesheet_link_tag    "application"
+    / Included JS Files
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+    -#%link{:href=> "http://fonts.googleapis.com/css?family=Lato:300,400,700", :rel=>'stylesheet',:type=>'text/css'}
+  %body
+    .header
+      %a.logo{:href => "/"}
+      %span.tagline Share with the world how your loved one came through for you with Western Union Money transfer
+    = yield
+    .row.main.spacer
+    .row.main
+      .seven.columns.offset-by-three
+        %p.copyright
+          Copyright 2012. All Rights Reserved. Home & Away is an initiative of Western Union
+      .two.columns
+        = image_tag "/assets/western-union-logo.jpg"

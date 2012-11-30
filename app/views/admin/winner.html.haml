@@ -1,0 +1,52 @@
+.container.yellow
+  .row.spacer
+  .row.main.rounded
+    .twelve.columns
+      %h4.subheader.subtitle Winners
+  .row.main
+    -if flash[:notice]
+      .alert-box.secondary.six.columns.centered
+        = flash[:notice]
+        %a.close
+          &times;
+  .row.main
+    %br
+  .row.main
+    .twelve.columns
+      %table.twelve
+        %thead
+          %tr
+            %th
+              Date
+            %th
+              Title
+            %th
+              Nominee
+            %th
+              MTCN
+            %th
+              By
+            %th
+              Votes
+        %tbody
+          -if @winning_stories and !@winning_stories.empty?
+            - @winning_stories.each  do |story|
+              %tr
+                %td
+                  = story.date_won.to_s(:article)
+                %td
+                  %a{:href => "/stories/#{story.id}"}
+                    = story.title
+                %td
+                  = story.nominee.full_name
+                %td
+                  = story.nominee.mtcn
+                %td
+                  = story.user.name
+                %td
+                  = story.votes
+          -else
+            %tr
+              %td
+                No stories have won yet
+

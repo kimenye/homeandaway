@@ -1,0 +1,47 @@
+.container.yellow
+  .row.spacer
+  .row.main.rounded
+    .twelve.columns
+      %h4.subheader.subtitle Administration
+  .row.main
+    .twelve.columns
+      %h6.subheader.subtitle Select a winning story for today
+  .row.main
+    = will_paginate @stories, :page_links => false, :previous_label => "", :next_label => "", :container => false
+    .twelve.columns
+      %table.twelve
+        %thead
+          %tr
+            %th
+              %br
+            %th
+              Title
+            %th
+              Nominee
+            %th
+              MTCN
+            %th
+              By
+            %th
+              Votes
+        %tbody
+          -if @stories and !@stories.empty?
+            - @stories.each  do |story|
+              %tr
+                %td
+                  = button_to "Choose", "/admin/winner/#{story.id}", :confirm => "Are you sure you want to choose this story as today's winner?"
+                %td
+                  %a{:href => "/stories/#{story.id}"}
+                    = story.title
+                %td
+                  = story.nominee.full_name
+                %td
+                  = story.nominee.mtcn
+                %td
+                  = story.user.name
+                %td
+                  = story.votes
+          -else
+            %tr
+              %td
+                No stories qualify to win today

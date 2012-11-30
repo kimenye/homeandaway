@@ -7,6 +7,12 @@ Homeandaway::Application.routes.draw do
 
   get "home/rates"
 
+  get "admin/index"
+
+  match '/admin/winner/:id' => "admin#winner"
+
+  match '/stories/winners' => "stories#winners"
+
   get "stories/index"
 
   get "nominees/index"

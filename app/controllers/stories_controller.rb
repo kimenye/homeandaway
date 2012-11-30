@@ -3,20 +3,28 @@ class StoriesController < ApplicationController
   def index
     @num_stories = Story.count
     @num_nominees = Nominee.count
-    @num_votes = Vote.count
+    @winning_stories = Story.joins(:nominees).where(:has_won => true).count
     @stories = Story.page(params[:page]).order('created_at DESC')
   end
 
   def show
     @num_stories = Story.count
     @num_nominees = Nominee.count
-    @num_votes = Vote.count
+    @winning_stories = Story.joins(:nominees).where(:has_won => true).count
     @story = Story.find(params[:id])
     prev = Story.where("id > ?", params[:id]).first
     nxt = Story.where("id < ?", params[:id]).first
     @other_stories = []
     @other_stories.push(prev) if !prev.nil?
     @other_stories.push(nxt) if !nxt.nil?
+  end
+
+  def winners
+    @num_stories = Story.count
+    @num_nominees = Nominee.count
+    @winning_stories = Story.joins(:nominees).where(:has_won => true).count
+
+    @stories = Story.where(:has_won => true).order('date_won DESC')
   end
 
   respond_to :json
