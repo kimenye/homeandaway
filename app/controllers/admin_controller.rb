@@ -13,7 +13,7 @@ class AdminController < ApplicationController
     if page.nil?
       page = 1
     end
-    @stories = Story.joins(:nominees).where(:has_won => false).paginate(:page => page, :per_page => 10)
+    @stories = Story.joins(:nominees).where(:has_won => nil).paginate(:page => page, :per_page => 10)
     render :layout => 'admin'
   end
 
