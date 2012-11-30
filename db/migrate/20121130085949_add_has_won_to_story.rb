@@ -1,5 +1,5 @@
 class AddHasWonToStory < ActiveRecord::Migration
   def change
-    add_column :stories, :has_won, :boolean, :default=> 0
+    add_column :stories, :has_won, :boolean
   end
 end
