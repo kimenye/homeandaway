@@ -21,6 +21,10 @@ class Story < ActiveRecord::Base
     return !picture_file_name.nil?
   end
 
+  def has_voted? user
+    return has_nominee? && nominee.has_already_voted?(user)
+  end
+
   def can_vote_for_story? user
     res = has_nominee? && nominee.can_be_voted_for_by?(user)
   end

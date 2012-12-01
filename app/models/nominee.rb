@@ -10,7 +10,10 @@ class Nominee < ActiveRecord::Base
 
   def can_be_voted_for_by?(user)
     is_my_story = story.user == user
-    has_already_voted = !votes.select { |v| v.user == user }.empty?
-    !is_my_story && !has_already_voted
+    !is_my_story and !has_already_voted? (user)
+  end
+
+  def has_already_voted?(user)
+    return !votes.select { |v| v.user == user }.empty?
   end
 end

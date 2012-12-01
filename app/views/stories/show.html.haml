@@ -20,11 +20,18 @@
         .three.columns.border-left.mobile-two
           %h4.subheader.num-votes{"data-num-votes" => @story.votes}
             = "#{@story.votes} Votes"
-        .two.columns.border-left.vote-here.mobile-two
-          - if current_user and @story.can_vote_for_story?(current_user)
-            %a.vote-now.vote-link{:href => "#", "data-id" => @story.nominee.id}
+        - if current_user
+          - if @story.can_vote_for_story?(current_user)
+            .two.columns.border-left.vote-here.mobile-two
+              %a.vote-now.vote-link{:href => "#", "data-id" => @story.nominee.id}
           - else
-            %a.vote-now.icon-thank-you
+            -if @story.has_voted?(current_user)
+              .two.columns.border-left.vote-here.mobile-two
+                %a.vote-now.icon-thank-you
+            -else
+              .two.columns.mobile-two
+        - else
+          .two.columns.mobile-two
         .one.columns
       .row
         %p
