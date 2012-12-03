@@ -17,6 +17,7 @@ class SessionsController < ApplicationController
   def oath_create
     user = User.from_omniauth(env["omniauth.auth"])
     session[:user_id] = user.id
+    flash[:open_dd] = true
     redirect_to root_url, :notice => "Logged in!"
   end
 

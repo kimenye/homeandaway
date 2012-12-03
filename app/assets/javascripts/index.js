@@ -17,6 +17,11 @@ $(document).ready(function() {
         visible = !visible;
     });
 
+    if (typeof openDd !== 'undefined') {
+        dropDown($('.nominate-your-hero'));
+        visible = !visible;
+    }
+
 
     $('.accept').click(function() {
         $('#terms-and-conditions-modal').trigger('reveal:close');
